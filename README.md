@@ -25,17 +25,16 @@ The goal is simple yet challenging: **survive as long as possible**, upgrade you
 
 - **WASD / Arrow Keys**: Movement
 - **Left Click**: Attack
-- **Spacebar**: Special ability
+- **Spacebar**: Jump
 - **ESC**: Pause
 
 ## 🛠️ Technologies
 
 *(Update according to the tools you use)*
 
-- **Engine**: [Your game engine - Unity/Godot/etc.]
-- **Language**: [Your primary language]
-- **Art**: [Art/sprite tools]
-- **Audio**: [Audio tools]
+- **Engine**: [Godot]
+- **Language**: [C#]
+- **Art**: [LibreSprite]
 
 ## 🎯 Game Jam Objectives
 
@@ -68,15 +67,6 @@ cd ForceOfHell
 # Run the game
 ```
 
-## 📋 Roadmap and Future Features
-
-- [ ] More enemy types
-- [ ] Power-up system
-- [ ] Multiple playable characters
-- [ ] Score and ranking system
-- [ ] Enhanced music and sound effects
-- [ ] Epic boss fights
-
 ## 🎮 Gameplay
 
 *(Add screenshots or GIFs when you have the game running)*
@@ -90,19 +80,10 @@ cd ForceOfHell
 - Dynamic difficulty scaling
 - [Add other technical accomplishments]
 
-## 🤝 Contributing
-
-Contributions are welcome! If you want to improve the game: 
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
 ## 👨‍💻 Author
 
 - **Arnau Baena** - Game Developer - [@BaenaArnau](https://github.com/BaenaArnau)
+- **Seri Flores** - Game Developer - [@SrG640](https://github.com/SrG640)
 
 ## 📄 License
 
