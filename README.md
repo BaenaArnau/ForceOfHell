@@ -24,7 +24,6 @@ The goal is simple yet challenging: **survive as long as possible**, upgrade you
 *(Update according to your game controls)*
 
 - **WASD / Arrow Keys**: Movement
-- **Mouse**: Aim
 - **Left Click**: Attack
 - **Spacebar**: Special ability
 - **ESC**: Pause
