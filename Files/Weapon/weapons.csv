@@ -1,0 +1,5 @@
+name,damage,cost,fire_rate,description,type_weapon
+Ak-47,2,5,0.1,A weapon from another dimension that is capable of shaping mana to create projectiles,distance
+Pyro,5,3,0.5,Basic fire magic,distance
+Sword,10,0,0.5,"You're a magician, but sometimes the use of force is more tempting than magic...",mele
+Chainsaw,2,0,0.1,"In another reality, you know the chainsaw man was calling you, so why not use it?",mele
