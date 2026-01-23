@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Scripts",
+    "\\Scripts\\MainCharacter"
   ],
   "SelectedNode": "\\Nuevo Proyecto de Juego.sln",
   "PreviewInSolutionExplorer": false
