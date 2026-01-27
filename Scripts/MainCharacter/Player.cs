@@ -1,122 +1,91 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 namespace ForceOfHell.Scripts.MainCharacter
 {
-	/// <summary>
-	/// Clase que representa al jugador.
-	/// </summary>
-	public partial class Player : CharacterBody2D
-	{
-		/// <summary>Velocidad horizontal configurada del jugador (px/s).</summary>
-		public const float Speed = 300.0f;
+    /// <summary>
+    /// Clase que representa al jugador.
+    /// </summary>
+    public partial class Player : CharacterBody2D
+    {
+        public const float Speed = 300.0f;
+        public const float JumpVelocity = -500.0f;
+        public const float CoyoteTimeMax = 0.15f;
 
-		/// <summary>Velocidad vertical aplicada al iniciar un salto (negativa = hacia arriba).</summary>
-		public const float JumpVelocity = -500.0f;
+        [Signal] public delegate void InJumpingEventHandler();
 
-		/// <summary>Duración máxima del salto coyote en segundos.</summary>
-		public const float CoyoteTimeMax = 0.15f;
+        private AnimatedSprite2D _animatedSprite;
+        private float _coyoteTimeCounter;
 
-		/// <summary>Tiempo restante para salto coyote (lectura pública, modificación privada).</summary>
-		private float _coyoteTimeCounter;
+        /// <summary>Tiempo restante para salto coyote (acceso público, modificación interna).</summary>
+        public float CoyoteTimeCounter 
+        { 
+            get => _coyoteTimeCounter; 
+            internal set => _coyoteTimeCounter = value; 
+        }
 
-		/// <summary>Tiempo restante para salto coyote (solo lectura pública).</summary>
-		public float CoyoteTimeRemaining => _coyoteTimeCounter;
+        /// <summary>Indica si el jugador está en proceso de muerte.</summary>
+        public bool IsDying { get; private set; }
 
-		[Signal] public delegate void InJumpingEventHandler();
+        public override void _Ready()
+        {
+            _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        }
 
-		/// <summary>
-		/// Compatibilidad: propiedad con el nombre antiguo usada por estados externos.
-		/// Permite lectura pública y asignación interna.
-		/// </summary>
-		public float CoyoteTimeCounter { get => _coyoteTimeCounter; internal set => _coyoteTimeCounter = value; }
+        public override void _PhysicsProcess(double delta) 
+        {
+            UpdateSpriteDirection();
+            UpdateCoyoteTime((float)delta);
+        }
 
-		/// <summary>
-		/// Compatibilidad: exponer AnimatedSprite2D como propiedad pública para estados que lo usan directamente.
-		/// </summary>
-		public AnimatedSprite2D animatedSprite
-		{
-			get
-			{
-				if (_animatedSpriteNode is AnimatedSprite2D aspr)
-					return aspr;
-				return GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-			}
-		}
+        /// <summary>Reproduce una animación. Ignora si el jugador está muriendo.</summary>
+        public void SetAnimation(string animationName)
+        {
+            if (!IsDying && _animatedSprite != null)
+                _animatedSprite.Play(animationName);
+        }
 
-		/// <summary>Bool para indicar que el jugador está en proceso de muerte (solo lectura externa).</summary>
-		public bool IsDying { get; private set; }
+        /// <summary>Maneja el daño recibido por el jugador.</summary>
+        public async Task HitAsync()
+        {
+            try
+            {
+                IsDying = true;
+                if (_animatedSprite != null)
+                {
+                    _animatedSprite.Play("hit");
+                    await ToSignal(_animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
+                }
+            }
+            catch (Exception)
+            {
+                // Asegurar recarga incluso si hay error
+            }
+            finally
+            {
+                GetTree().CallDeferred(SceneTree.MethodName.ReloadCurrentScene);
+            }
+        }
 
-		/// <summary> Sprite animado del jugador para controlar las animaciones (privado).</summary>
-		private Node _animatedSpriteNode;
+        private void UpdateSpriteDirection()
+        {
+            if (_animatedSprite == null) 
+                return;
 
-		/// <summary>
-		/// Método llamado al iniciar el nodo.
-		/// </summary>
-		public override void _Ready()
-		{
-			_animatedSpriteNode = GetNodeOrNull("AnimatedSprite2D");
-		}
+            _animatedSprite.FlipH = Velocity.X switch
+            {
+                < 0f => true,
+                > 0f => false,
+                _ => _animatedSprite.FlipH
+            };
+        }
 
-		/// <summary>Actualización de física del jugador. Mantener ligera para lógica central.</summary>
-		/// <param name="delta">Tiempo en segundos desde el último paso de física.</param>
-		public override void _PhysicsProcess(double delta) 
-		{
-			if (Velocity.X < 0f)
-			{
-				if (_animatedSpriteNode is AnimatedSprite2D aspr)
-					aspr.FlipH = true;
-			}
-			else if (Velocity.X > 0f)
-			{
-				if (_animatedSpriteNode is AnimatedSprite2D aspr2)
-					aspr2.FlipH = false;
-			}
-
-			if (IsOnFloor())
-				_coyoteTimeCounter = CoyoteTimeMax;
-			else
-			{
-				_coyoteTimeCounter -= (float)delta;
-				if (_coyoteTimeCounter < 0f)
-					_coyoteTimeCounter = 0f;
-			}
-		}
-
-		/// <summary>
-		/// Reproduce una animación en el <see cref="AnimatedSprite2D"/> hijo.
-		/// Método auxiliar usado por los estados para cambiar la animación.
-		/// </summary>
-		/// <param name="animationName">Nombre de la animación a reproducir.</param>
-		public void SetAnimation(string animationName)
-		{
-			if (IsDying)
-				return;
-			
-			if (_animatedSpriteNode is AnimatedSprite2D aspr)
-				aspr.Play(animationName);
-
-		}
-
-		/// <summary>
-		/// Método llamado cuando el jugador recibe daño.
-		/// </summary>
-		public async System.Threading.Tasks.Task HitAsync()
-		{
-			try
-			{
-				IsDying = true;
-				if (_animatedSpriteNode is AnimatedSprite2D aspr)
-				{
-					aspr.Play("hit");
-					await ToSignal(aspr, "animation_finished");
-				}
-				GetTree().CallDeferred("reload_current_scene");
-			}
-			catch (Exception)
-			{
-				GetTree().CallDeferred("reload_current_scene");
-			}
-		}
-	}
+        private void UpdateCoyoteTime(float delta)
+        {
+            _coyoteTimeCounter = IsOnFloor() 
+                ? CoyoteTimeMax 
+                : Math.Max(0f, _coyoteTimeCounter - delta);
+        }
+    }
 }

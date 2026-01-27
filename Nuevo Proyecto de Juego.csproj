@@ -5,4 +5,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>ForceOfHell</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="gitignore .gitignore" />
+  </ItemGroup>
 </Project>
