@@ -1,3 +1,54 @@
-[gd_scene format=3 uid="uid://bdukdfn4s4ccf"]
+[gd_scene load_steps=10 format=3 uid="uid://bdukdfn4s4ccf"]
 
-[node name="Character" type="Node2D"]
+[ext_resource type="Script" uid="uid://dfig3pl0s8svl" path="res://Scripts/MainCharacter/Player.cs" id="1_anqvw"]
+[ext_resource type="Texture2D" uid="uid://b6o831dummplb" path="res://Assets/MainCharacter/Gandor.png" id="1_ro1ak"]
+[ext_resource type="Script" uid="uid://cccgshgfhxtop" path="res://Scripts/StateMachine/MovementStateMachine/MovementStateMachine.cs" id="3_5l7sn"]
+[ext_resource type="Script" uid="uid://dmhnyxrvuqvqr" path="res://Scripts/StateMachine/MovementStateMachine/State/IdleMovementState.cs" id="4_sb6ov"]
+[ext_resource type="Script" uid="uid://cqr06fk3t2li3" path="res://Scripts/StateMachine/MovementStateMachine/State/RunningMovementState.cs" id="5_uwjxv"]
+[ext_resource type="Script" uid="uid://bqdyvw1r6p6lv" path="res://Scripts/StateMachine/MovementStateMachine/State/JumpingMovementState.cs" id="6_dveta"]
+[ext_resource type="Script" uid="uid://do0bieokxjn43" path="res://Scripts/StateMachine/MovementStateMachine/State/FallingMovementState.cs" id="7_xi5gx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_da458"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ro1ak")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_erg8x"]
+size = Vector2(19, 24)
+
+[node name="Character" type="CharacterBody2D" groups=["MainCharacter"]]
+script = ExtResource("1_anqvw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_da458")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.5, 8)
+shape = SubResource("RectangleShape2D_erg8x")
+
+[node name="MovementStateMachine" type="Node" parent="."]
+script = ExtResource("3_5l7sn")
+initialState = NodePath("IdleMovementState")
+
+[node name="IdleMovementState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("4_sb6ov")
+
+[node name="RunningMovementState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("5_uwjxv")
+
+[node name="JumpingMovementState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("6_dveta")
+
+[node name="FallingMovementState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("7_xi5gx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
