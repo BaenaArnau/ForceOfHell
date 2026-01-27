@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Nuevo Proyecto de Juego": {
+      "commandName": "Project"
+    },
+    "Perfil 1": {
+      "commandName": "Executable",
+      "executablePath": "E:\\Godot_v4.6-stable_mono_win64\\Godot_v4.6-stable_mono_win64\\Godot_v4.6-stable_mono_win64.exe",
+      "commandLineArgs": "--path \"D:\\Proyectos-Godot\\ForceOfHell\"",
+      "workingDirectory": "D:\\Proyectos-Godot"
+    }
+  }
+}
