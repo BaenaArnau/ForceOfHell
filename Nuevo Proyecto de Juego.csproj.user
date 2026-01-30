@@ -4,6 +4,6 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup>
-    <ActiveDebugProfile>Perfil 1</ActiveDebugProfile>
+    <ActiveDebugProfile>Proyectos-JAM/ForceOfHell</ActiveDebugProfile>
   </PropertyGroup>
 </Project>

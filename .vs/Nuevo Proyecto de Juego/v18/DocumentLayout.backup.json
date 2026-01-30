@@ -1,38 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Proyectos-Godot\\ForceOfHell\\",
+  "WorkspaceRootPath": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|d:\\proyectos-godot\\forceofhell\\gitignore .gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:gitignore .gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|d:\\proyectos-godot\\forceofhell\\scripts\\statemachine\\movementstatemachine\\state\\fallingmovementstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\statemachine\\movementstatemachine\\state\\fallingmovementstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|d:\\proyectos-godot\\forceofhell\\scripts\\statemachine\\movementstatemachine\\state\\idlemovementstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\statemachine\\movementstatemachine\\state\\idlemovementstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|d:\\proyectos-godot\\forceofhell\\scripts\\maincharacter\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|e:\\proyectos\\projectos-jam\\forceofhell\\scripts\\maincharacter\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\maincharacter\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|d:\\proyectos-godot\\forceofhell\\scripts\\statemachine\\movementstatemachine\\state\\jumpingmovementstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\statemachine\\movementstatemachine\\state\\jumpingmovementstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|e:\\proyectos\\projectos-jam\\forceofhell\\scripts\\weapons\\weapons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\weapons\\weapons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|d:\\proyectos-godot\\forceofhell\\scripts\\statemachine\\movementstatemachine\\movementstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\statemachine\\movementstatemachine\\movementstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|e:\\proyectos\\projectos-jam\\forceofhell\\scripts\\weapons\\readweapons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\weapons\\readweapons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|d:\\proyectos-godot\\forceofhell\\scripts\\statemachine\\movementstatemachine\\state\\runningmovementstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\statemachine\\movementstatemachine\\state\\runningmovementstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|d:\\proyectos-godot\\forceofhell\\scripts\\statemachine\\state.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\statemachine\\state.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|e:\\proyectos\\projectos-jam\\forceofhell\\files\\weapon\\weapons.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:files\\weapon\\weapons.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -59,104 +43,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "gitignore .gitignore",
-              "DocumentMoniker": "D:\\Proyectos-Godot\\ForceOfHell\\gitignore .gitignore",
-              "RelativeDocumentMoniker": "gitignore .gitignore",
-              "ToolTip": "D:\\Proyectos-Godot\\ForceOfHell\\gitignore .gitignore",
-              "RelativeToolTip": "gitignore .gitignore",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAACoAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-01-27T14:30:04.981Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "State.cs",
-              "DocumentMoniker": "D:\\Proyectos-Godot\\ForceOfHell\\Scripts\\StateMachine\\State.cs",
-              "RelativeDocumentMoniker": "Scripts\\StateMachine\\State.cs",
-              "ToolTip": "D:\\Proyectos-Godot\\ForceOfHell\\Scripts\\StateMachine\\State.cs",
-              "RelativeToolTip": "Scripts\\StateMachine\\State.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAA7AAAAAAAAAA==",
+              "Title": "Player.cs",
+              "DocumentMoniker": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\MainCharacter\\Player.cs",
+              "RelativeDocumentMoniker": "Scripts\\MainCharacter\\Player.cs",
+              "ToolTip": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\MainCharacter\\Player.cs",
+              "RelativeToolTip": "Scripts\\MainCharacter\\Player.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAswFwAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T18:02:20.637Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MovementStateMachine.cs",
-              "DocumentMoniker": "D:\\Proyectos-Godot\\ForceOfHell\\Scripts\\StateMachine\\MovementStateMachine\\MovementStateMachine.cs",
-              "RelativeDocumentMoniker": "Scripts\\StateMachine\\MovementStateMachine\\MovementStateMachine.cs",
-              "ToolTip": "D:\\Proyectos-Godot\\ForceOfHell\\Scripts\\StateMachine\\MovementStateMachine\\MovementStateMachine.cs",
-              "RelativeToolTip": "Scripts\\StateMachine\\MovementStateMachine\\MovementStateMachine.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T17:52:28.099Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "JumpingMovementState.cs",
-              "DocumentMoniker": "D:\\Proyectos-Godot\\ForceOfHell\\Scripts\\StateMachine\\MovementStateMachine\\State\\JumpingMovementState.cs",
-              "RelativeDocumentMoniker": "Scripts\\StateMachine\\MovementStateMachine\\State\\JumpingMovementState.cs",
-              "ToolTip": "D:\\Proyectos-Godot\\ForceOfHell\\Scripts\\StateMachine\\MovementStateMachine\\State\\JumpingMovementState.cs",
-              "RelativeToolTip": "Scripts\\StateMachine\\MovementStateMachine\\State\\JumpingMovementState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T17:49:30.862Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IdleMovementState.cs",
-              "DocumentMoniker": "D:\\Proyectos-Godot\\ForceOfHell\\Scripts\\StateMachine\\MovementStateMachine\\State\\IdleMovementState.cs",
-              "RelativeDocumentMoniker": "Scripts\\StateMachine\\MovementStateMachine\\State\\IdleMovementState.cs",
-              "ToolTip": "D:\\Proyectos-Godot\\ForceOfHell\\Scripts\\StateMachine\\MovementStateMachine\\State\\IdleMovementState.cs",
-              "RelativeToolTip": "Scripts\\StateMachine\\MovementStateMachine\\State\\IdleMovementState.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T17:40:45.034Z",
+              "WhenOpened": "2026-01-29T17:59:43.573Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FallingMovementState.cs",
-              "DocumentMoniker": "D:\\Proyectos-Godot\\ForceOfHell\\Scripts\\StateMachine\\MovementStateMachine\\State\\FallingMovementState.cs",
-              "RelativeDocumentMoniker": "Scripts\\StateMachine\\MovementStateMachine\\State\\FallingMovementState.cs",
-              "ToolTip": "D:\\Proyectos-Godot\\ForceOfHell\\Scripts\\StateMachine\\MovementStateMachine\\State\\FallingMovementState.cs",
-              "RelativeToolTip": "Scripts\\StateMachine\\MovementStateMachine\\State\\FallingMovementState.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwAYAAAAEAAAAAAAAAA==",
+              "Title": "Weapons.cs",
+              "DocumentMoniker": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\Weapons\\Weapons.cs",
+              "RelativeDocumentMoniker": "Scripts\\Weapons\\Weapons.cs",
+              "ToolTip": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\Weapons\\Weapons.cs",
+              "RelativeToolTip": "Scripts\\Weapons\\Weapons.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAUwCoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T17:39:55.828Z",
+              "WhenOpened": "2026-01-29T17:16:56.993Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "RunningMovementState.cs",
-              "DocumentMoniker": "D:\\Proyectos-Godot\\ForceOfHell\\Scripts\\StateMachine\\MovementStateMachine\\State\\RunningMovementState.cs",
-              "RelativeDocumentMoniker": "Scripts\\StateMachine\\MovementStateMachine\\State\\RunningMovementState.cs",
-              "ToolTip": "D:\\Proyectos-Godot\\ForceOfHell\\Scripts\\StateMachine\\MovementStateMachine\\State\\RunningMovementState.cs",
-              "RelativeToolTip": "Scripts\\StateMachine\\MovementStateMachine\\State\\RunningMovementState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAEAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "ReadWeapons.cs",
+              "DocumentMoniker": "E:\\PROYECTOS\\PROJECTOS-JAM\\FORCEOFHELL\\Scripts\\Weapons\\ReadWeapons.cs",
+              "RelativeDocumentMoniker": "Scripts\\Weapons\\ReadWeapons.cs",
+              "ToolTip": "E:\\PROYECTOS\\PROJECTOS-JAM\\FORCEOFHELL\\Scripts\\Weapons\\ReadWeapons.cs",
+              "RelativeToolTip": "Scripts\\Weapons\\ReadWeapons.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAYwBcAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T17:39:45.49Z",
+              "WhenOpened": "2026-01-29T17:13:31.311Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Player.cs",
-              "DocumentMoniker": "D:\\Proyectos-Godot\\ForceOfHell\\Scripts\\MainCharacter\\Player.cs",
-              "RelativeDocumentMoniker": "Scripts\\MainCharacter\\Player.cs",
-              "ToolTip": "D:\\Proyectos-Godot\\ForceOfHell\\Scripts\\MainCharacter\\Player.cs",
-              "RelativeToolTip": "Scripts\\MainCharacter\\Player.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAmwAMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T17:38:56.121Z",
+              "Title": "weapons.csv",
+              "DocumentMoniker": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Files\\Weapon\\weapons.csv",
+              "RelativeDocumentMoniker": "Files\\Weapon\\weapons.csv",
+              "ToolTip": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Files\\Weapon\\weapons.csv",
+              "RelativeToolTip": "Files\\Weapon\\weapons.csv",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002120|",
+              "WhenOpened": "2026-01-29T16:39:55.156Z",
               "EditorCaption": ""
             }
           ]

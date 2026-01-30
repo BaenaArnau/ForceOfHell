@@ -12,6 +12,9 @@ namespace ForceOfHell.Scripts.MainCharacter
 		public const float Speed = 300.0f;
 		public const float JumpVelocity = -500.0f;
 		public const float CoyoteTimeMax = 0.15f;
+		int mana = 100;
+		int health = 100;
+		[Export] AnimatedSprite2D weapon;
 
 		[Signal] public delegate void InJumpingEventHandler();
 
@@ -70,15 +73,27 @@ namespace ForceOfHell.Scripts.MainCharacter
 
 		private void UpdateSpriteDirection()
 		{
-			if (_animatedSprite == null) 
+			if (_animatedSprite == null)
 				return;
 
-			_animatedSprite.FlipH = Velocity.X switch
+			var currentFlip = _animatedSprite.FlipH;
+			var nextFlip = Velocity.X switch
 			{
 				< 0f => true,
 				> 0f => false,
-				_ => _animatedSprite.FlipH
+				_ => currentFlip
 			};
+
+			_animatedSprite.FlipH = nextFlip;
+
+			if (weapon != null) 
+			{
+				weapon.FlipH = nextFlip;
+				if (nextFlip)
+					weapon.Position = new Vector2(0, weapon.Position.Y);
+				else 
+					weapon.Position = new Vector2(8, weapon.Position.Y);
+			}
 		}
 
 		private void UpdateCoyoteTime(float delta)

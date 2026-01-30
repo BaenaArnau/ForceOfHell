@@ -3,11 +3,17 @@
     "Nuevo Proyecto de Juego": {
       "commandName": "Project"
     },
-    "Perfil 1": {
+    "Proyectos-Godot/ForceOfHell": {
       "commandName": "Executable",
       "executablePath": "E:\\Godot_v4.6-stable_mono_win64\\Godot_v4.6-stable_mono_win64\\Godot_v4.6-stable_mono_win64.exe",
       "commandLineArgs": "--path \"D:\\Proyectos-Godot\\ForceOfHell\"",
       "workingDirectory": "D:\\Proyectos-Godot"
+    },
+    "Proyectos-JAM/ForceOfHell": {
+      "commandName": "Executable",
+      "executablePath": "E:\\Godot_v4.6-stable_mono_win64\\Godot_v4.6-stable_mono_win64\\Godot_v4.6-stable_mono_win64.exe",
+      "commandLineArgs": "--path \"E:\\Proyectos\\Projectos-JAM\\ForceOfHell\"",
+      "workingDirectory": "E:\\Proyectos\\Projectos-JAM"
     }
   }
 }

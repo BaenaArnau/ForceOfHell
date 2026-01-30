@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdukdfn4s4ccf"]
+[gd_scene format=3 uid="uid://bdukdfn4s4ccf"]
 
 [ext_resource type="Script" uid="uid://dfig3pl0s8svl" path="res://Scripts/MainCharacter/Player.cs" id="1_anqvw"]
 [ext_resource type="Texture2D" uid="uid://b6o831dummplb" path="res://Assets/MainCharacter/Gandor.png" id="1_ro1ak"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cqr06fk3t2li3" path="res://Scripts/StateMachine/MovementStateMachine/State/RunningMovementState.cs" id="5_uwjxv"]
 [ext_resource type="Script" uid="uid://bqdyvw1r6p6lv" path="res://Scripts/StateMachine/MovementStateMachine/State/JumpingMovementState.cs" id="6_dveta"]
 [ext_resource type="Script" uid="uid://do0bieokxjn43" path="res://Scripts/StateMachine/MovementStateMachine/State/FallingMovementState.cs" id="7_xi5gx"]
+[ext_resource type="PackedScene" uid="uid://bsuqe4yrwqjdp" path="res://Scenes/Weapons/weapons.tscn" id="8_5l7sn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_da458"]
 animations = [{
@@ -20,36 +21,44 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_erg8x"]
-size = Vector2(19, 24)
+size = Vector2(15, 20)
 
-[node name="Character" type="CharacterBody2D" groups=["MainCharacter"]]
+[node name="Character" type="CharacterBody2D" unique_id=2055695245 node_paths=PackedStringArray("weapon") groups=["MainCharacter"]]
 script = ExtResource("1_anqvw")
+weapon = NodePath("Weapon")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=684299310]
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_da458")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7.5, 8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=151177965]
+position = Vector2(7.5, 10)
 shape = SubResource("RectangleShape2D_erg8x")
 
-[node name="MovementStateMachine" type="Node" parent="."]
+[node name="MovementStateMachine" type="Node" parent="." unique_id=1663697822]
 script = ExtResource("3_5l7sn")
 initialState = NodePath("IdleMovementState")
 
-[node name="IdleMovementState" type="Node" parent="MovementStateMachine"]
+[node name="IdleMovementState" type="Node" parent="MovementStateMachine" unique_id=1965836379]
 script = ExtResource("4_sb6ov")
 
-[node name="RunningMovementState" type="Node" parent="MovementStateMachine"]
+[node name="RunningMovementState" type="Node" parent="MovementStateMachine" unique_id=1718529160]
 script = ExtResource("5_uwjxv")
 
-[node name="JumpingMovementState" type="Node" parent="MovementStateMachine"]
+[node name="JumpingMovementState" type="Node" parent="MovementStateMachine" unique_id=1270249174]
 script = ExtResource("6_dveta")
 
-[node name="FallingMovementState" type="Node" parent="MovementStateMachine"]
+[node name="FallingMovementState" type="Node" parent="MovementStateMachine" unique_id=2100523333]
 script = ExtResource("7_xi5gx")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=102209153]
+zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
+
+[node name="Weapon" parent="." unique_id=581127003 instance=ExtResource("8_5l7sn")]
+texture_filter = 1
+position = Vector2(13, 8)
+scale = Vector2(0.99999994, 1)
+animation = &"Staff"
