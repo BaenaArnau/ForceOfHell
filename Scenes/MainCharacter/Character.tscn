@@ -59,6 +59,6 @@ position_smoothing_enabled = true
 
 [node name="Weapon" parent="." unique_id=581127003 instance=ExtResource("8_5l7sn")]
 texture_filter = 1
-position = Vector2(13, 8)
+position = Vector2(14.000001, 7)
 scale = Vector2(0.99999994, 1)
 animation = &"Staff"

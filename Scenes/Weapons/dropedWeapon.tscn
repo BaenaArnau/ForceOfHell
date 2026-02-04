@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dky4keyxpagd3"]
+
+[ext_resource type="Script" uid="uid://dywte1k4bhyrs" path="res://Scripts/Weapons/DropWeapon.cs" id="1_1fgn7"]
+[ext_resource type="PackedScene" uid="uid://bsuqe4yrwqjdp" path="res://Scenes/Weapons/weapons.tscn" id="1_v6kgw"]
+[ext_resource type="PackedScene" uid="uid://w3rws7q6tbbd" path="res://Scenes/Weapons/weaponsDescription.tscn" id="3_ik27q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fgn7"]
+size = Vector2(25, 23)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1fgn7"]
+radius = 67.0
+
+[node name="AreaDropedWeapon" type="Area2D" unique_id=827756824]
+script = ExtResource("1_1fgn7")
+weaponSpritePath = NodePath("AnimatedDropedWeapon")
+infoAreaPath = NodePath("AreaInfo")
+popupPath = NodePath("WeaponPopup")
+
+[node name="CollisionDropedWeapon" type="CollisionShape2D" parent="." unique_id=863474476]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_1fgn7")
+
+[node name="AnimatedDropedWeapon" parent="." unique_id=1117934843 instance=ExtResource("1_v6kgw")]
+position = Vector2(0, -1)
+animation = &"Staff"
+
+[node name="AreaInfo" type="Area2D" parent="." unique_id=317133090]
+
+[node name="CollisionInfo" type="CollisionShape2D" parent="AreaInfo" unique_id=768104997]
+shape = SubResource("CircleShape2D_1fgn7")
+debug_color = Color(0.9541039, 0.14339173, 0.41270456, 0.41960785)
+
+[node name="WeaponPopup" parent="." unique_id=1057792082 instance=ExtResource("3_ik27q")]
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="area_entered" from="AreaInfo" to="." method="OnInfoAreaEntered"]
+[connection signal="area_exited" from="AreaInfo" to="." method="OnInfoAreaExited"]

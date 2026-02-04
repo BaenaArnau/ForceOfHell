@@ -26,6 +26,10 @@ project/assembly_name="Nuevo Proyecto de Juego"
 
 enabled=PackedStringArray("res://addons/csvedit/plugin.cfg")
 
+[gui]
+
+theme/custom_font="uid://brm7n32bn01lq"
+
 [input]
 
 move_left={

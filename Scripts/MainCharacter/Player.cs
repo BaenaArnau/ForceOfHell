@@ -1,3 +1,4 @@
+using ForceOfHell.Scripts.Weapons;
 using Godot;
 using System;
 using System.Threading.Tasks;
@@ -92,7 +93,7 @@ namespace ForceOfHell.Scripts.MainCharacter
 				if (nextFlip)
 					weapon.Position = new Vector2(0, weapon.Position.Y);
 				else 
-					weapon.Position = new Vector2(8, weapon.Position.Y);
+					weapon.Position = new Vector2(13, weapon.Position.Y);
 			}
 		}
 
@@ -101,6 +102,17 @@ namespace ForceOfHell.Scripts.MainCharacter
 			_coyoteTimeCounter = IsOnFloor() 
 				? CoyoteTimeMax 
 				: Math.Max(0f, _coyoteTimeCounter - delta);
+		}
+
+		public void ChangeWeapon(int id)
+		{
+			if (weapon != null && weapon is Weapons.Weapons weapons) 
+			{
+				weapons.SetWeapon(id);
+            }
+
+			else
+				GD.PushError("[Player] No se ha asignado el nodo de arma."); 
 		}
 	}
 }

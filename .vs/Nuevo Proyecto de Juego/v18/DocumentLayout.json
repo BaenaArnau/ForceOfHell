@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|e:\\proyectos\\projectos-jam\\forceofhell\\scripts\\weapons\\dropweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\weapons\\dropweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|e:\\proyectos\\projectos-jam\\forceofhell\\scripts\\maincharacter\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\maincharacter\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|e:\\proyectos\\projectos-jam\\forceofhell\\scripts\\weapons\\weapons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\weapons\\weapons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|e:\\proyectos\\projectos-jam\\forceofhell\\scenes\\weapons\\weaponsdescription.tscn||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scenes\\weapons\\weaponsdescription.tscn||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|e:\\proyectos\\projectos-jam\\forceofhell\\scripts\\weapons\\readweapons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -13,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|e:\\proyectos\\projectos-jam\\forceofhell\\files\\weapon\\weapons.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:files\\weapon\\weapons.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|e:\\proyectos\\projectos-jam\\forceofhell\\scripts\\weapons\\weapons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\weapons\\weapons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,54 +42,75 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "weaponsDescription.tscn",
+              "DocumentMoniker": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scenes\\Weapons\\weaponsDescription.tscn",
+              "RelativeDocumentMoniker": "Scenes\\Weapons\\weaponsDescription.tscn",
+              "ToolTip": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scenes\\Weapons\\weaponsDescription.tscn",
+              "RelativeToolTip": "Scenes\\Weapons\\weaponsDescription.tscn",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-02-04T18:54:53.887Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "DropWeapon.cs",
+              "DocumentMoniker": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\Weapons\\DropWeapon.cs",
+              "RelativeDocumentMoniker": "Scripts\\Weapons\\DropWeapon.cs",
+              "ToolTip": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\Weapons\\DropWeapon.cs",
+              "RelativeToolTip": "Scripts\\Weapons\\DropWeapon.cs",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAAAHEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-03T14:35:23.068Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Player.cs",
               "DocumentMoniker": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\MainCharacter\\Player.cs",
               "RelativeDocumentMoniker": "Scripts\\MainCharacter\\Player.cs",
               "ToolTip": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\MainCharacter\\Player.cs",
               "RelativeToolTip": "Scripts\\MainCharacter\\Player.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAswFwAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAAAG4AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-29T17:59:43.573Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Weapons.cs",
               "DocumentMoniker": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\Weapons\\Weapons.cs",
               "RelativeDocumentMoniker": "Scripts\\Weapons\\Weapons.cs",
               "ToolTip": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\Weapons\\Weapons.cs",
               "RelativeToolTip": "Scripts\\Weapons\\Weapons.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAUwCoAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAYwAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-29T17:16:56.993Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "ReadWeapons.cs",
-              "DocumentMoniker": "E:\\PROYECTOS\\PROJECTOS-JAM\\FORCEOFHELL\\Scripts\\Weapons\\ReadWeapons.cs",
+              "DocumentMoniker": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\Weapons\\ReadWeapons.cs",
               "RelativeDocumentMoniker": "Scripts\\Weapons\\ReadWeapons.cs",
-              "ToolTip": "E:\\PROYECTOS\\PROJECTOS-JAM\\FORCEOFHELL\\Scripts\\Weapons\\ReadWeapons.cs",
+              "ToolTip": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\Weapons\\ReadWeapons.cs",
               "RelativeToolTip": "Scripts\\Weapons\\ReadWeapons.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAowBcAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-29T17:13:31.311Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-29T17:13:31.311Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "weapons.csv",
               "DocumentMoniker": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Files\\Weapon\\weapons.csv",
               "RelativeDocumentMoniker": "Files\\Weapon\\weapons.csv",
@@ -89,8 +118,7 @@
               "RelativeToolTip": "Files\\Weapon\\weapons.csv",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002120|",
-              "WhenOpened": "2026-01-29T16:39:55.156Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-29T16:39:55.156Z"
             }
           ]
         }

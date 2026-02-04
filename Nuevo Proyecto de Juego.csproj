@@ -1,4 +1,4 @@
-<Project Sdk="Godot.NET.Sdk/4.6.0">
+﻿<Project Sdk="Godot.NET.Sdk/4.6.0">
   <PropertyGroup>
 	<TargetFramework>net8.0</TargetFramework>
 	<TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
@@ -8,5 +8,6 @@
   <ItemGroup>
 	<None Include=".gitignore" />
 	<None Include="Files\**\*" />
+	<None Include="Scenes\**\*" />
   </ItemGroup>
 </Project>
