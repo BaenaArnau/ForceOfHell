@@ -1,4 +1,5 @@
 using ForceOfHell.Scripts.Weapons;
+using ForceOfHell.Scripts.Weapons.Bullet;
 using Godot;
 using System;
 using System.Threading.Tasks;
@@ -13,9 +14,17 @@ namespace ForceOfHell.Scripts.MainCharacter
 		public const float Speed = 300.0f;
 		public const float JumpVelocity = -500.0f;
 		public const float CoyoteTimeMax = 0.15f;
-		int mana = 100;
-		int health = 100;
-		[Export] AnimatedSprite2D weapon;
+
+		// Ajustes de posicionamiento del arma según la dirección.
+		private const float WeaponOffsetLeft = 0f;
+		private const float WeaponOffsetRight = 13f;
+
+		private Weapons.Weapons equip_weapon;
+		private int mana = 100;
+		private int health = 100;
+
+		[Export] private AnimatedSprite2D animatedWeapon;
+		[Export] public PackedScene CargarBullet { get; set; }
 
 		[Signal] public delegate void InJumpingEventHandler();
 
@@ -23,10 +32,10 @@ namespace ForceOfHell.Scripts.MainCharacter
 		private float _coyoteTimeCounter;
 
 		/// <summary>Tiempo restante para salto coyote (acceso público, modificación interna).</summary>
-		public float CoyoteTimeCounter 
-		{ 
-			get => _coyoteTimeCounter; 
-			internal set => _coyoteTimeCounter = value; 
+		public float CoyoteTimeCounter
+		{
+			get => _coyoteTimeCounter;
+			internal set => _coyoteTimeCounter = value;
 		}
 
 		/// <summary>Indica si el jugador está en proceso de muerte.</summary>
@@ -34,13 +43,18 @@ namespace ForceOfHell.Scripts.MainCharacter
 
 		public override void _Ready()
 		{
-			_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+			// Inicializa arma y sprite principal.
+			equip_weapon = new Weapons.Weapons();
+			_animatedSprite = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
+			equip_weapon.SetWeapon(0);
 		}
 
-		public override void _PhysicsProcess(double delta) 
+		public override void _PhysicsProcess(double delta)
 		{
 			UpdateSpriteDirection();
 			UpdateCoyoteTime((float)delta);
+			equip_weapon?.UpdateCooldown((float)delta);
+			attack();
 		}
 
 		/// <summary>Reproduce una animación. Ignora si el jugador está muriendo.</summary>
@@ -56,6 +70,8 @@ namespace ForceOfHell.Scripts.MainCharacter
 			try
 			{
 				IsDying = true;
+
+				// Reproduce la animación de daño y espera a que termine.
 				if (_animatedSprite != null)
 				{
 					_animatedSprite.Play("hit");
@@ -64,7 +80,7 @@ namespace ForceOfHell.Scripts.MainCharacter
 			}
 			catch (Exception)
 			{
-				// Asegurar recarga incluso si hay error
+				// Asegurar recarga incluso si hay error.
 			}
 			finally
 			{
@@ -85,34 +101,56 @@ namespace ForceOfHell.Scripts.MainCharacter
 				_ => currentFlip
 			};
 
+			// Evita asignaciones repetidas si no cambia la dirección.
+			if (currentFlip == nextFlip)
+				return;
+
 			_animatedSprite.FlipH = nextFlip;
 
-			if (weapon != null) 
+			// Sincroniza el arma con la dirección del sprite principal.
+			if (animatedWeapon != null)
 			{
-				weapon.FlipH = nextFlip;
-				if (nextFlip)
-					weapon.Position = new Vector2(0, weapon.Position.Y);
-				else 
-					weapon.Position = new Vector2(13, weapon.Position.Y);
+				animatedWeapon.FlipH = nextFlip;
+				var xOffset = nextFlip ? WeaponOffsetLeft : WeaponOffsetRight;
+				animatedWeapon.Position = new Vector2(xOffset, animatedWeapon.Position.Y);
 			}
 		}
 
 		private void UpdateCoyoteTime(float delta)
 		{
-			_coyoteTimeCounter = IsOnFloor() 
-				? CoyoteTimeMax 
+			// Rellena el coyote time cuando está en el suelo, o lo reduce en el aire.
+			_coyoteTimeCounter = IsOnFloor()
+				? CoyoteTimeMax
 				: Math.Max(0f, _coyoteTimeCounter - delta);
 		}
 
 		public void ChangeWeapon(int id)
 		{
-			if (weapon != null && weapon is Weapons.Weapons weapons) 
+			if (equip_weapon == null)
 			{
-				weapons.SetWeapon(id);
-            }
+				GD.PushError("[Player] No se ha asignado el arma.");
+				return;
+			}
 
+			equip_weapon.SetWeapon(id);
+
+			// Actualiza la animación del arma si existe.
+			if (animatedWeapon != null)
+				animatedWeapon.SetAnimation(equip_weapon.Name);
 			else
-				GD.PushError("[Player] No se ha asignado el nodo de arma."); 
+				GD.PushError("[Player] No se ha asignado el nodo de arma.");
+		}
+
+		public void attack()
+		{
+			// Salida temprana para minimizar trabajo si no se puede disparar.
+			if (equip_weapon == null || !equip_weapon.attack() || CargarBullet == null || _animatedSprite == null)
+				return;
+
+			var bulletInstance = (Bullet)CargarBullet.Instantiate();
+			bulletInstance.GlobalPosition = _animatedSprite.GlobalPosition;
+			bulletInstance.Configure(equip_weapon.direction, equip_weapon.Bullet);
+			GetTree().CurrentScene?.AddChild(bulletInstance);
 		}
 	}
 }

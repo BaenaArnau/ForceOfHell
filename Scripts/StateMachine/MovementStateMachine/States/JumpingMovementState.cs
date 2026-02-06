@@ -2,12 +2,12 @@ using Godot;
 using System.Threading.Tasks;
 using PlayerType = ForceOfHell.Scripts.MainCharacter.Player;
 
-namespace ForceOfHell.Scripts.StateMachine.MovementStateMachine.State
+namespace ForceOfHell.Scripts.StateMachine.MovementStateMachine.States
 {
     /// <summary>
     /// Estado de movimiento para el salto del jugador.
     /// </summary>
-    public partial class JumpingMovementState : Scripts.StateMachine.State
+    public partial class JumpingMovementState : State
     {
         private PlayerType _player;
 

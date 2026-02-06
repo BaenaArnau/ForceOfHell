@@ -2,12 +2,12 @@ using Godot;
 using System.Threading.Tasks;
 using PlayerType = ForceOfHell.Scripts.MainCharacter.Player;
 
-namespace ForceOfHell.Scripts.StateMachine.MovementStateMachine.State
+namespace ForceOfHell.Scripts.StateMachine.MovementStateMachine.States
 {
     /// <summary>
     /// Estado de movimiento para la caída del jugador.
     /// </summary>
-    public partial class FallingMovementState : Scripts.StateMachine.State
+    public partial class FallingMovementState : State
     {
         private const float LandingVelocityThreshold = 250f;
 

@@ -19,7 +19,8 @@ namespace ForceOfHell.Scripts.Weapons
 		private Label? _nameLabel;
 		private Label? _damageLabel;
 		private Label? _fireRateLabel;
-		private Label? _descriptionLabel;
+        private Label? _manaCostLabel;
+        private Label? _descriptionLabel;
 
 		private const float PopupOffsetY = 16f;
 
@@ -36,7 +37,8 @@ namespace ForceOfHell.Scripts.Weapons
 				_nameLabel = _popup.GetNode<Label>("VBoxContainer/Name");
 				_damageLabel = _popup.GetNode<Label>("VBoxContainer/HBoxContainer3/HBoxContainer/DamageNum");
 				_fireRateLabel = _popup.GetNode<Label>("VBoxContainer/HBoxContainer3/HBoxContainer2/FireRateNum");
-				_descriptionLabel = _popup.GetNode<Label>("VBoxContainer/Description");
+				_manaCostLabel = _popup.GetNode<Label>("VBoxContainer/HBoxContainer3/HBoxContainer3/ManaCostNum");
+                _descriptionLabel = _popup.GetNode<Label>("VBoxContainer/Description");
 
 				_popup.Visible = false;
 				_popup.Size = (Vector2I)_popup.GetContentsMinimumSize();
@@ -83,7 +85,8 @@ namespace ForceOfHell.Scripts.Weapons
 			_nameLabel!.Text = Weapon.Name;
 			_damageLabel!.Text = Weapon.Damage.ToString("0.##");
 			_fireRateLabel!.Text = Weapon.FireRate.ToString("0.##");
-			_descriptionLabel!.Text = Weapon.Description;
+			_manaCostLabel!.Text = Weapon.Cost.ToString("0.##");
+            _descriptionLabel!.Text = Weapon.Description;
 
 			PositionPopupAboveWeapon();
 		}

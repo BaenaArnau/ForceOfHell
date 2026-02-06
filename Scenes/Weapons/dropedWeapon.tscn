@@ -31,6 +31,7 @@ shape = SubResource("CircleShape2D_1fgn7")
 debug_color = Color(0.9541039, 0.14339173, 0.41270456, 0.41960785)
 
 [node name="WeaponPopup" parent="." unique_id=1057792082 instance=ExtResource("3_ik27q")]
+visible = false
 
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
 [connection signal="area_entered" from="AreaInfo" to="." method="OnInfoAreaEntered"]

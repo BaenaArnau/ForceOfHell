@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://du4avw04wpxwg" path="res://Assets/Weapons/Ak47.png" id="2_ws0du"]
 [ext_resource type="Texture2D" uid="uid://fjgmpsnrg0u1" path="res://Assets/Weapons/Staff.png" id="3_r2fqy"]
 [ext_resource type="Texture2D" uid="uid://nyucqew0l8r6" path="res://Assets/Weapons/Sword.png" id="5_qe7ok"]
+[ext_resource type="PackedScene" uid="uid://5j2x6do8xna6" path="res://Scenes/Weapons/Bullet/Bullet.tscn" id="6_qe7ok"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ws0du"]
 atlas = ExtResource("2_0hw1l")
@@ -137,4 +138,6 @@ animations = [{
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_e5s1b")
 animation = &"AK-47"
+frame_progress = 1.0
 script = ExtResource("1_ws0du")
+CargarBullet = ExtResource("6_qe7ok")

@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dfig3pl0s8svl" path="res://Scripts/MainCharacter/Player.cs" id="1_anqvw"]
 [ext_resource type="Texture2D" uid="uid://b6o831dummplb" path="res://Assets/MainCharacter/Gandor.png" id="1_ro1ak"]
+[ext_resource type="PackedScene" uid="uid://5j2x6do8xna6" path="res://Scenes/Weapons/Bullet/Bullet.tscn" id="2_sb6ov"]
 [ext_resource type="Script" uid="uid://cccgshgfhxtop" path="res://Scripts/StateMachine/MovementStateMachine/MovementStateMachine.cs" id="3_5l7sn"]
-[ext_resource type="Script" uid="uid://dmhnyxrvuqvqr" path="res://Scripts/StateMachine/MovementStateMachine/State/IdleMovementState.cs" id="4_sb6ov"]
-[ext_resource type="Script" uid="uid://cqr06fk3t2li3" path="res://Scripts/StateMachine/MovementStateMachine/State/RunningMovementState.cs" id="5_uwjxv"]
-[ext_resource type="Script" uid="uid://bqdyvw1r6p6lv" path="res://Scripts/StateMachine/MovementStateMachine/State/JumpingMovementState.cs" id="6_dveta"]
-[ext_resource type="Script" uid="uid://do0bieokxjn43" path="res://Scripts/StateMachine/MovementStateMachine/State/FallingMovementState.cs" id="7_xi5gx"]
+[ext_resource type="Script" uid="uid://dmhnyxrvuqvqr" path="res://Scripts/StateMachine/MovementStateMachine/States/IdleMovementState.cs" id="4_5l7sn"]
+[ext_resource type="Script" uid="uid://cqr06fk3t2li3" path="res://Scripts/StateMachine/MovementStateMachine/States/RunningMovementState.cs" id="5_sb6ov"]
+[ext_resource type="Script" uid="uid://bqdyvw1r6p6lv" path="res://Scripts/StateMachine/MovementStateMachine/States/JumpingMovementState.cs" id="6_uwjxv"]
+[ext_resource type="Script" uid="uid://do0bieokxjn43" path="res://Scripts/StateMachine/MovementStateMachine/States/FallingMovementState.cs" id="7_dveta"]
 [ext_resource type="PackedScene" uid="uid://bsuqe4yrwqjdp" path="res://Scenes/Weapons/weapons.tscn" id="8_5l7sn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_da458"]
@@ -23,9 +24,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_erg8x"]
 size = Vector2(15, 20)
 
-[node name="Character" type="CharacterBody2D" unique_id=2055695245 node_paths=PackedStringArray("weapon") groups=["MainCharacter"]]
+[node name="Character" type="CharacterBody2D" unique_id=2055695245 node_paths=PackedStringArray("animatedWeapon") groups=["MainCharacter"]]
 script = ExtResource("1_anqvw")
-weapon = NodePath("Weapon")
+animatedWeapon = NodePath("Weapon")
+CargarBullet = ExtResource("2_sb6ov")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=684299310]
 texture_filter = 1
@@ -42,16 +44,16 @@ script = ExtResource("3_5l7sn")
 initialState = NodePath("IdleMovementState")
 
 [node name="IdleMovementState" type="Node" parent="MovementStateMachine" unique_id=1965836379]
-script = ExtResource("4_sb6ov")
+script = ExtResource("4_5l7sn")
 
 [node name="RunningMovementState" type="Node" parent="MovementStateMachine" unique_id=1718529160]
-script = ExtResource("5_uwjxv")
+script = ExtResource("5_sb6ov")
 
 [node name="JumpingMovementState" type="Node" parent="MovementStateMachine" unique_id=1270249174]
-script = ExtResource("6_dveta")
+script = ExtResource("6_uwjxv")
 
 [node name="FallingMovementState" type="Node" parent="MovementStateMachine" unique_id=2100523333]
-script = ExtResource("7_xi5gx")
+script = ExtResource("7_dveta")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=102209153]
 zoom = Vector2(1.5, 1.5)
@@ -62,3 +64,6 @@ texture_filter = 1
 position = Vector2(14.000001, 7)
 scale = Vector2(0.99999994, 1)
 animation = &"Staff"
+frame = 9
+frame_progress = 0.0
+script = null

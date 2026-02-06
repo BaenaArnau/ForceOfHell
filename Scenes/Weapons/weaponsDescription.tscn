@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://w3rws7q6tbbd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro8le"]
-content_margin_left = 10.0
-content_margin_top = 10.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
 bg_color = Color(0.6, 0.6, 0.6, 0.57254905)
 border_width_left = 3
 border_width_top = 3
@@ -19,7 +19,7 @@ anti_aliasing_size = 10.0
 
 [node name="WeaponPopup" type="PopupPanel" unique_id=1057792082]
 oversampling_override = 1.0
-size = Vector2i(352, 132)
+size = Vector2i(264, 104)
 visible = true
 theme_override_styles/panel = SubResource("StyleBoxFlat_ro8le")
 
@@ -27,16 +27,17 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ro8le")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="Name" type="Label" parent="VBoxContainer" unique_id=568704418]
 layout_mode = 2
+theme_override_font_sizes/font_size = 8
 text = "<item>"
 horizontal_alignment = 1
 
@@ -52,14 +53,18 @@ layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer3/HBoxContainer" unique_id=114594409]
 layout_mode = 2
-theme_override_constants/margin_left = 50
+theme_override_constants/margin_left = 20
 
 [node name="Damage" type="Label" parent="VBoxContainer/HBoxContainer3/HBoxContainer" unique_id=501042534]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
 text = "Damage:"
 
 [node name="DamageNum" type="Label" parent="VBoxContainer/HBoxContainer3/HBoxContainer" unique_id=474319603]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
 text = "0"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3" unique_id=1472505414]
@@ -67,26 +72,56 @@ layout_mode = 2
 size_flags_horizontal = 10
 alignment = 2
 
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer3/HBoxContainer2" unique_id=1792613495]
+layout_mode = 2
+theme_override_constants/margin_right = 2
+
 [node name="FireRate" type="Label" parent="VBoxContainer/HBoxContainer3/HBoxContainer2" unique_id=1233091366]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.66128486, 0.51277894, 5.7756904e-07, 1)
+theme_override_font_sizes/font_size = 8
 text = "Fire Rate:"
 
 [node name="FireRateNum" type="Label" parent="VBoxContainer/HBoxContainer3/HBoxContainer2" unique_id=1764513873]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.6627451, 0.5137255, 0, 1)
+theme_override_font_sizes/font_size = 8
 text = "0"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer3/HBoxContainer2" unique_id=821299890]
 layout_mode = 2
-theme_override_constants/margin_right = 50
+theme_override_constants/margin_right = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3" unique_id=323487032]
+layout_mode = 2
+size_flags_horizontal = 10
+alignment = 2
+
+[node name="ManaCost" type="Label" parent="VBoxContainer/HBoxContainer3/HBoxContainer3" unique_id=200627530]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.66559213, 0.3117707, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "Mana:"
+
+[node name="ManaCostNum" type="Label" parent="VBoxContainer/HBoxContainer3/HBoxContainer3" unique_id=1919670378]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6666667, 0.3137255, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "0"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer3/HBoxContainer3" unique_id=1137454096]
+layout_mode = 2
+theme_override_constants/margin_right = 20
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=921292641]
 layout_mode = 2
 
 [node name="Description" type="Label" parent="VBoxContainer" unique_id=178807087]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(50, 40)
 layout_mode = 2
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
+theme_override_font_sizes/font_size = 8
 text = "<description>"
 horizontal_alignment = 1
 autowrap_mode = 2

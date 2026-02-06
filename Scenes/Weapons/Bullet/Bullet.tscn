@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://5j2x6do8xna6"]
+
+[ext_resource type="Script" uid="uid://bkufw4rcbqfok" path="res://Scripts/Weapons/Bullet/Bullet.cs" id="1_1ihln"]
+[ext_resource type="Texture2D" uid="uid://dkad85u28ckec" path="res://Assets/Weapons/Bullet/AK-47 Bullet1.png" id="1_fds85"]
+[ext_resource type="Texture2D" uid="uid://d3ekk44iudavm" path="res://Assets/Weapons/Bullet/FireBall.png" id="2_1ihln"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idis5"]
+radius = 7.309392
+height = 25.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lephu"]
+atlas = ExtResource("2_1ihln")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0448x"]
+atlas = ExtResource("2_1ihln")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh8sv"]
+atlas = ExtResource("2_1ihln")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_modk2"]
+atlas = ExtResource("2_1ihln")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fg365"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fds85")
+}],
+"loop": true,
+"name": &"Bullet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lephu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0448x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh8sv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_modk2")
+}],
+"loop": true,
+"name": &"FireBall",
+"speed": 5.0
+}]
+
+[node name="Bullet" type="Area2D" unique_id=1115106005 node_paths=PackedStringArray("_animatedSprite", "_collisionShape")]
+script = ExtResource("1_1ihln")
+_animatedSprite = NodePath("AnimatedSprite2D")
+_collisionShape = NodePath("Fireball")
+
+[node name="Fireball" type="CollisionShape2D" parent="." unique_id=1408232162]
+position = Vector2(4.9999995, -0.99999994)
+rotation = 1.5707964
+scale = Vector2(0.95767194, 0.87999994)
+shape = SubResource("CapsuleShape2D_idis5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=290429100]
+texture_filter = 1
+position = Vector2(5, 0)
+scale = Vector2(1.0314839, 1)
+sprite_frames = SubResource("SpriteFrames_fg365")
+animation = &"FireBall"
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

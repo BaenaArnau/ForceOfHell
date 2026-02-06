@@ -1,13 +1,14 @@
 using Godot;
 using System.Threading.Tasks;
+using ForceOfHell.Scripts.StateMachine.MovementStateMachine;
 using PlayerType = ForceOfHell.Scripts.MainCharacter.Player;
 
-namespace ForceOfHell.Scripts.StateMachine.MovementStateMachine.State
+namespace ForceOfHell.Scripts.StateMachine.MovementStateMachine.States
 {
     /// <summary>
     /// Estado de movimiento para la carrera del jugador.
     /// </summary>
-    public partial class RunningMovementState : Scripts.StateMachine.State
+    public partial class RunningMovementState : State
     {
         private PlayerType _player;
 

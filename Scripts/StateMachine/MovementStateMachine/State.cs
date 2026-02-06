@@ -1,8 +1,7 @@
 using Godot;
 using System;
-using ForceOfHell.Scripts.StateMachine.MovementStateMachine;
 
-namespace ForceOfHell.Scripts.StateMachine
+namespace ForceOfHell.Scripts.StateMachine.MovementStateMachine
 {
     /// <summary>
     /// Clase base para todos los estados de la máquina de movimiento.
@@ -15,12 +14,12 @@ namespace ForceOfHell.Scripts.StateMachine
         /// Se asigna desde <see cref="MovementStateMachine"/> en tiempo de preparación.
         /// Expuesta como lectura pública pero solo asignable internamente por la máquina.
         /// </summary>
-        private MovementStateMachine.MovementStateMachine _stateMachine;
+        private MovementStateMachine _stateMachine;
 
         /// <summary>
         /// Propiedad pública para acceder a la máquina de estados. El setter es interno.
         /// </summary>
-        public MovementStateMachine.MovementStateMachine StateMachine
+        public MovementStateMachine StateMachine
         {
             get => _stateMachine;
             internal set
@@ -33,7 +32,7 @@ namespace ForceOfHell.Scripts.StateMachine
         /// <summary>
         /// Campo protegido mantenido por compatibilidad. Los estados existentes usan `stateMachine`.
         /// </summary>
-        protected MovementStateMachine.MovementStateMachine stateMachine;
+        protected MovementStateMachine stateMachine;
 
         /// <summary>Se invoca cuando el estado empieza (se entra en él).</summary>
         public virtual void Enter() { }
