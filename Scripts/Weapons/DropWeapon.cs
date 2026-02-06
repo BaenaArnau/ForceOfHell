@@ -19,10 +19,15 @@ namespace ForceOfHell.Scripts.Weapons
 		private Label? _nameLabel;
 		private Label? _damageLabel;
 		private Label? _fireRateLabel;
-        private Label? _manaCostLabel;
-        private Label? _descriptionLabel;
+		private Label? _manaCostLabel;
+		private Label? _descriptionLabel;
 
 		private const float PopupOffsetY = 16f;
+		private const float BobAmplitude = 6f;
+		private const float BobSpeed = 2.5f;
+
+		private Vector2 _basePosition;
+		private float _bobTime;
 
 		public Weapons Weapon { get; private set; } = default!;
 
@@ -38,7 +43,7 @@ namespace ForceOfHell.Scripts.Weapons
 				_damageLabel = _popup.GetNode<Label>("VBoxContainer/HBoxContainer3/HBoxContainer/DamageNum");
 				_fireRateLabel = _popup.GetNode<Label>("VBoxContainer/HBoxContainer3/HBoxContainer2/FireRateNum");
 				_manaCostLabel = _popup.GetNode<Label>("VBoxContainer/HBoxContainer3/HBoxContainer3/ManaCostNum");
-                _descriptionLabel = _popup.GetNode<Label>("VBoxContainer/Description");
+				_descriptionLabel = _popup.GetNode<Label>("VBoxContainer/Description");
 
 				_popup.Visible = false;
 				_popup.Size = (Vector2I)_popup.GetContentsMinimumSize();
@@ -51,6 +56,16 @@ namespace ForceOfHell.Scripts.Weapons
 				_infoArea.Connect(Area2D.SignalName.BodyEntered, new Callable(this, nameof(OnInfoAreaEntered)));
 				_infoArea.Connect(Area2D.SignalName.BodyExited, new Callable(this, nameof(OnInfoAreaExited)));
 			}
+
+			_basePosition = Position;
+			_bobTime = 0f;
+		}
+
+		public override void _Process(double delta)
+		{
+			_bobTime += (float)delta * BobSpeed;
+			var offsetY = Mathf.Sin(_bobTime) * BobAmplitude;
+			Position = _basePosition + new Vector2(0f, offsetY);
 		}
 
 		private void AssignRandomWeapon()
@@ -86,7 +101,7 @@ namespace ForceOfHell.Scripts.Weapons
 			_damageLabel!.Text = Weapon.Damage.ToString("0.##");
 			_fireRateLabel!.Text = Weapon.FireRate.ToString("0.##");
 			_manaCostLabel!.Text = Weapon.Cost.ToString("0.##");
-            _descriptionLabel!.Text = Weapon.Description;
+			_descriptionLabel!.Text = Weapon.Description;
 
 			PositionPopupAboveWeapon();
 		}
@@ -118,8 +133,8 @@ namespace ForceOfHell.Scripts.Weapons
 			{
 				player.SetAnimation("PickUp");
 				player.ChangeWeapon(Weapon.Id);
-                QueueFree();
+				QueueFree();
 			}
-        }
-    }
+		}
+	}
 }

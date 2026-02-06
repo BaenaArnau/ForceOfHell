@@ -20,8 +20,11 @@ namespace ForceOfHell.Scripts.MainCharacter
 		private const float WeaponOffsetRight = 13f;
 
 		private Weapons.Weapons equip_weapon;
-		private int mana = 100;
-		private int health = 100;
+		private const int mana = 100;
+		private const int health = 100;
+
+		public int manaActual = mana;
+		public int healthActual = health;
 
 		[Export] private AnimatedSprite2D animatedWeapon;
 		[Export] public PackedScene CargarBullet { get; set; }
@@ -54,7 +57,16 @@ namespace ForceOfHell.Scripts.MainCharacter
 			UpdateSpriteDirection();
 			UpdateCoyoteTime((float)delta);
 			equip_weapon?.UpdateCooldown((float)delta);
-			attack();
+
+			if ((manaActual - equip_weapon.Cost) >= 0) 
+			{
+				attack();
+				GD.Print(manaActual);
+			}
+			else
+			{
+				GD.Print("No tienes suficiente mana para usar el arma.");
+			}
 		}
 
 		/// <summary>Reproduce una animación. Ignora si el jugador está muriendo.</summary>
@@ -147,6 +159,8 @@ namespace ForceOfHell.Scripts.MainCharacter
 			if (equip_weapon == null || !equip_weapon.attack() || CargarBullet == null || _animatedSprite == null)
 				return;
 
+			animatedWeapon.Play(equip_weapon.Name);
+			manaActual -= equip_weapon.Cost;
 			var bulletInstance = (Bullet)CargarBullet.Instantiate();
 			bulletInstance.GlobalPosition = _animatedSprite.GlobalPosition;
 			bulletInstance.Configure(equip_weapon.direction, equip_weapon.Bullet);

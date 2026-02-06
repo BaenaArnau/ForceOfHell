@@ -52,6 +52,7 @@ namespace ForceOfHell.Scripts.Weapons
 		/// <summary>Actualización por frame (no usada actualmente).</summary>
 		public override void _Process(double delta)
 		{
+
 		}
 
 		/// <summary>Configura las propiedades del arma desde los datos.</summary>

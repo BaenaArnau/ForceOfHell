@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|e:\\proyectos\\projectos-jam\\forceofhell\\scripts\\weapons\\bullet\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\weapons\\bullet\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|e:\\proyectos\\projectos-jam\\forceofhell\\scripts\\maincharacter\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\maincharacter\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,12 +11,12 @@
       "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\weapons\\weapons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|e:\\proyectos\\projectos-jam\\forceofhell\\files\\weapon\\weapons.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:files\\weapon\\weapons.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|e:\\proyectos\\projectos-jam\\forceofhell\\scripts\\statemachine\\movementstatemachine\\states\\idlemovementstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\statemachine\\movementstatemachine\\states\\idlemovementstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|e:\\proyectos\\projectos-jam\\forceofhell\\scripts\\weapons\\bullet\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|solutionrelative:scripts\\weapons\\bullet\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{54F9DA4B-E65B-4F7E-87B5-EFE1B67D3CE7}|Nuevo Proyecto de Juego.csproj|e:\\proyectos\\projectos-jam\\forceofhell\\scripts\\statemachine\\movementstatemachine\\state.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,46 +46,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Weapons.cs",
               "DocumentMoniker": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\Weapons\\Weapons.cs",
               "RelativeDocumentMoniker": "Scripts\\Weapons\\Weapons.cs",
               "ToolTip": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\Weapons\\Weapons.cs",
               "RelativeToolTip": "Scripts\\Weapons\\Weapons.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAADgv0kAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAADkAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-29T17:16:56.993Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Bullet.cs",
               "DocumentMoniker": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\Weapons\\Bullet\\Bullet.cs",
               "RelativeDocumentMoniker": "Scripts\\Weapons\\Bullet\\Bullet.cs",
               "ToolTip": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\Weapons\\Bullet\\Bullet.cs",
               "RelativeToolTip": "Scripts\\Weapons\\Bullet\\Bullet.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAowBEAAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-05T17:55:40.259Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Player.cs",
               "DocumentMoniker": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\MainCharacter\\Player.cs",
               "RelativeDocumentMoniker": "Scripts\\MainCharacter\\Player.cs",
               "ToolTip": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\MainCharacter\\Player.cs",
               "RelativeToolTip": "Scripts\\MainCharacter\\Player.cs",
-              "ViewState": "AgIAAHwAAAAAAAAAAAAjwJIAAABpAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAIA4wD8AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-29T17:59:43.573Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "State.cs",
               "DocumentMoniker": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\StateMachine\\MovementStateMachine\\State.cs",
               "RelativeDocumentMoniker": "Scripts\\StateMachine\\MovementStateMachine\\State.cs",
@@ -102,7 +98,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "IdleMovementState.cs",
               "DocumentMoniker": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\StateMachine\\MovementStateMachine\\States\\IdleMovementState.cs",
               "RelativeDocumentMoniker": "Scripts\\StateMachine\\MovementStateMachine\\States\\IdleMovementState.cs",
@@ -115,7 +111,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "MovementStateMachine.cs",
               "DocumentMoniker": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Scripts\\StateMachine\\MovementStateMachine\\MovementStateMachine.cs",
               "RelativeDocumentMoniker": "Scripts\\StateMachine\\MovementStateMachine\\MovementStateMachine.cs",
@@ -124,19 +120,6 @@
               "ViewState": "AgIAADUAAAAAAAAAAAAYwEkAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-05T16:44:49.986Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "weapons.csv",
-              "DocumentMoniker": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Files\\Weapon\\weapons.csv",
-              "RelativeDocumentMoniker": "Files\\Weapon\\weapons.csv",
-              "ToolTip": "E:\\Proyectos\\Projectos-JAM\\ForceOfHell\\Files\\Weapon\\weapons.csv",
-              "RelativeToolTip": "Files\\Weapon\\weapons.csv",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002120|",
-              "WhenOpened": "2026-01-29T16:39:55.156Z",
-              "EditorCaption": ""
             }
           ]
         }
