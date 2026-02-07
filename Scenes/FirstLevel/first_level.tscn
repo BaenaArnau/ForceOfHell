@@ -154,4 +154,4 @@ tile_set = SubResource("TileSet_gbkxx")
 position = Vector2(26, 418)
 
 [node name="Area2D" parent="." unique_id=827756824 instance=ExtResource("6_rec3u")]
-position = Vector2(256, 445)
+position = Vector2(256, 438)

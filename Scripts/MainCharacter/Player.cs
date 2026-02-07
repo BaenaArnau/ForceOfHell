@@ -11,8 +11,8 @@ namespace ForceOfHell.Scripts.MainCharacter
 	/// </summary>
 	public partial class Player : CharacterBody2D
 	{
-		public const float Speed = 300.0f;
-		public const float JumpVelocity = -500.0f;
+		public const float Speed = 200.0f;
+		public const float JumpVelocity = -350.0f;
 		public const float CoyoteTimeMax = 0.15f;
 
 		// Ajustes de posicionamiento del arma según la dirección.
