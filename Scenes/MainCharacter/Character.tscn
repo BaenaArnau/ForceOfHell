@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dkwhiptay6lga" path="res://Assets/MainCharacter/Gandor Walk.png" id="6_y023f"]
 [ext_resource type="Script" uid="uid://do0bieokxjn43" path="res://Scripts/StateMachine/MovementStateMachine/States/FallingMovementState.cs" id="7_dveta"]
 [ext_resource type="PackedScene" uid="uid://bsuqe4yrwqjdp" path="res://Scenes/Weapons/weapons.tscn" id="8_5l7sn"]
+[ext_resource type="Script" uid="uid://bfvbi3ul1tlys" path="res://Scripts/MainCharacter/Camera.cs" id="13_dc8fv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g28bo"]
 atlas = ExtResource("3_xi5gx")
@@ -153,7 +154,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cbm4r")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -161,7 +162,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_vn8kb")
 }],
-"loop": true,
+"loop": false,
 "name": &"fall",
 "speed": 5.0
 }, {
@@ -184,7 +185,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8tskx")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit",
 "speed": 5.0
 }, {
@@ -206,7 +207,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_vn8kb")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -241,7 +242,7 @@ texture_filter = 1
 texture_repeat = 1
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_da458")
-animation = &"fall"
+animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=151177965]
 position = Vector2(7.5, 10)
@@ -263,9 +264,16 @@ script = ExtResource("6_uwjxv")
 [node name="FallingMovementState" type="Node" parent="MovementStateMachine" unique_id=2100523333]
 script = ExtResource("7_dveta")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=102209153]
-zoom = Vector2(1.5, 1.5)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=102209153 node_paths=PackedStringArray("player")]
+zoom = Vector2(3, 3)
+limit_left = 0
+limit_top = 0
+limit_right = 2716
+limit_bottom = 647
+limit_smoothed = true
 position_smoothing_enabled = true
+script = ExtResource("13_dc8fv")
+player = NodePath("..")
 
 [node name="Weapon" parent="." unique_id=581127003 instance=ExtResource("8_5l7sn")]
 position = Vector2(14.000001, 7)
@@ -273,3 +281,5 @@ scale = Vector2(0.99999994, 1)
 animation = &"Staff"
 frame = 9
 script = null
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -26,10 +26,13 @@ namespace ForceOfHell.Scripts.MainCharacter
 		public int manaActual = mana;
 		public int healthActual = health;
 
-		[Export] private AnimatedSprite2D animatedWeapon;
-		[Export] public PackedScene CargarBullet { get; set; }
+        // Nodo de animación del arma, asignado desde el editor.
+        [Export] private AnimatedSprite2D animatedWeapon;
+        // Escena de la bala, asignada desde el editor.
+        [Export] public PackedScene CargarBullet { get; set; }
 
-		[Signal] public delegate void InJumpingEventHandler();
+        // Eventos de señal para acciones del jugador.
+        [Signal] public delegate void InJumpingEventHandler();
 
 		private AnimatedSprite2D _animatedSprite;
 		private float _coyoteTimeCounter;
@@ -42,7 +45,7 @@ namespace ForceOfHell.Scripts.MainCharacter
 		}
 
 		/// <summary>Indica si el jugador está en proceso de muerte.</summary>
-		public bool IsDying { get; private set; }
+		public bool IsDying { get; set; }
 
 		public override void _Ready()
 		{
@@ -52,8 +55,17 @@ namespace ForceOfHell.Scripts.MainCharacter
 			equip_weapon.SetWeapon(0);
 		}
 
+		/// <summary>
+		/// Handles per-frame physics processing, including updating sprite direction, managing coyote time, updating weapon
+		/// cooldowns, and processing attacks based on available mana.
+		/// </summary>
+		/// <param name="delta">The elapsed time, in seconds, since the previous physics frame. Used to update time-dependent logic.</param>
 		public override void _PhysicsProcess(double delta)
 		{
+			// Bloquea toda lógica si el jugador está muriendo.
+			if (IsDying)
+				return;
+
 			UpdateSpriteDirection();
 			UpdateCoyoteTime((float)delta);
 			equip_weapon?.UpdateCooldown((float)delta);
@@ -100,6 +112,43 @@ namespace ForceOfHell.Scripts.MainCharacter
 			}
 		}
 
+		/// <summary>
+		/// Inicia la secuencia de muerte: bloquea acciones, reproduce animación y recarga la escena.
+		/// </summary>
+		public async Task Die()
+		{
+			if (IsDying)
+				return;
+
+			IsDying = true;
+			Velocity = Vector2.Zero;
+			MoveAndSlide();
+
+			try
+			{
+				if (_animatedSprite != null)
+				{
+					_animatedSprite.Play("death");
+					await ToSignal(_animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
+				}
+			}
+			catch (Exception)
+			{
+				GetTree().CallDeferred(SceneTree.MethodName.ReloadCurrentScene);
+			}
+			finally
+			{
+				GetTree().CallDeferred(SceneTree.MethodName.ReloadCurrentScene);
+			}
+		}
+
+		/// <summary>
+		/// Updates the horizontal flip state of the sprite and its associated weapon based on the current horizontal
+		/// velocity.
+		/// </summary>
+		/// <remarks>This method ensures that the sprite and weapon visually face the correct direction according to
+		/// movement. If the direction has not changed since the last update, no changes are made. The weapon's position is
+		/// also adjusted to match the new orientation.</remarks>
 		private void UpdateSpriteDirection()
 		{
 			if (_animatedSprite == null)
@@ -128,6 +177,12 @@ namespace ForceOfHell.Scripts.MainCharacter
 			}
 		}
 
+		/// <summary>
+		/// Updates the coyote time counter based on whether the character is on the ground or in the air.
+		/// </summary>
+		/// <remarks>Coyote time allows the character to jump for a brief period after leaving the ground, improving
+		/// responsiveness in platforming controls.</remarks>
+		/// <param name="delta">The elapsed time, in seconds, since the last update. Must be non-negative.</param>
 		private void UpdateCoyoteTime(float delta)
 		{
 			// Rellena el coyote time cuando está en el suelo, o lo reduce en el aire.
@@ -136,6 +191,12 @@ namespace ForceOfHell.Scripts.MainCharacter
 				: Math.Max(0f, _coyoteTimeCounter - delta);
 		}
 
+		/// <summary>
+		/// Changes the currently equipped weapon to the weapon specified by the given identifier.
+		/// </summary>
+		/// <remarks>If no weapon is currently assigned or the animated weapon node is missing, an error is logged and
+		/// the weapon is not changed.</remarks>
+		/// <param name="id">The identifier of the weapon to equip. Must correspond to a valid weapon available to the player.</param>
 		public void ChangeWeapon(int id)
 		{
 			if (equip_weapon == null)
@@ -153,15 +214,28 @@ namespace ForceOfHell.Scripts.MainCharacter
 				GD.PushError("[Player] No se ha asignado el nodo de arma.");
 		}
 
+		/// <summary>
+		/// Performs an attack using the currently equipped weapon. Melee weapons apply a visual swing,
+		/// ranged weapons apply recoil and spawn a bullet. Flips sprite to face the attack direction.
+		/// </summary>
 		public void attack()
 		{
-			// Salida temprana para minimizar trabajo si no se puede disparar.
+			// Salida temprana para minimizar trabajo si no se puede atacar.
 			if (equip_weapon == null || !equip_weapon.attack() || CargarBullet == null || _animatedSprite == null)
 				return;
 
 			animatedWeapon.Play(equip_weapon.Name);
 			manaActual -= equip_weapon.Cost;
-			var bulletInstance = (Bullet)CargarBullet.Instantiate();
+
+			// Aplica el retroceso visual del arma (estilo Nuclear Throne).
+			if (animatedWeapon != null)
+				equip_weapon.ApplyRecoil(animatedWeapon, _animatedSprite.FlipH);
+
+            // Si el arma es cuerpo a cuerpo, no se instancia una bala.
+            if (equip_weapon.IsMeelee)
+				return; 
+
+            var bulletInstance = (Bullet)CargarBullet.Instantiate();
 			bulletInstance.GlobalPosition = _animatedSprite.GlobalPosition;
 			bulletInstance.Configure(equip_weapon.direction, equip_weapon.Bullet);
 			GetTree().CurrentScene?.AddChild(bulletInstance);

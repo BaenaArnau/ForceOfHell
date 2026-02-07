@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://brdqatwerl4tu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7gp1f"]
+size = Vector2(30, 48)
+
+[node name="Puerta" type="Area2D" unique_id=116221728]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=501747270]
+position = Vector2(-5, 13)
+shape = SubResource("RectangleShape2D_7gp1f")
+debug_color = Color(0.78718317, 0.43105993, 0.06105703, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1305997915]

@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://brn75uyhnnl6n" path="res://Assets/Map/Terrain/tilemap ForceOfHel Back.png" id="4_2lf6d"]
 [ext_resource type="PackedScene" uid="uid://bdukdfn4s4ccf" path="res://Scenes/MainCharacter/Character.tscn" id="5_2lf6d"]
 [ext_resource type="PackedScene" uid="uid://dky4keyxpagd3" path="res://Scenes/Weapons/dropedWeapon.tscn" id="6_rec3u"]
+[ext_resource type="PackedScene" uid="uid://brdqatwerl4tu" path="res://Scenes/Objects/puerta.tscn" id="7_5cq42"]
+[ext_resource type="PackedScene" uid="uid://bxjwbmjrbuxag" path="res://Scenes/Objects/dead_zone.tscn" id="8_loyn8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8qcnd"]
 texture = ExtResource("1_hvaqb")
@@ -155,3 +157,10 @@ position = Vector2(26, 418)
 
 [node name="Area2D" parent="." unique_id=827756824 instance=ExtResource("6_rec3u")]
 position = Vector2(256, 438)
+
+[node name="Puerta" parent="." unique_id=116221728 instance=ExtResource("7_5cq42")]
+position = Vector2(324, 419)
+
+[node name="DeadZone" parent="." unique_id=1639480769 instance=ExtResource("8_loyn8")]
+position = Vector2(-1619.0001, 650.00006)
+scale = Vector2(5, 5)
