@@ -39,6 +39,12 @@ namespace ForceOfHell.Scripts.StateMachine.MovementStateMachine.States
         /// <param name="delta">Delta en segundos.</param>
         public override void Update(double delta)
         {
+            if (_player.CanClimb && (Input.IsActionPressed("move_up") || Input.IsActionPressed("move_down")))
+            {
+                stateMachine.TransitionTo("ClimbMovementState");
+                return;
+            }
+
             if (_player.IsOnFloor() && _player.Velocity.X == 0)
                 stateMachine.TransitionTo("IdleMovementState");
         }

@@ -26,13 +26,13 @@ namespace ForceOfHell.Scripts.MainCharacter
 		public int manaActual = mana;
 		public int healthActual = health;
 
-        // Nodo de animación del arma, asignado desde el editor.
-        [Export] private AnimatedSprite2D animatedWeapon;
-        // Escena de la bala, asignada desde el editor.
-        [Export] public PackedScene CargarBullet { get; set; }
+		// Nodo de animación del arma, asignado desde el editor.
+		[Export] private AnimatedSprite2D animatedWeapon;
+		// Escena de la bala, asignada desde el editor.
+		[Export] public PackedScene CargarBullet { get; set; }
 
-        // Eventos de señal para acciones del jugador.
-        [Signal] public delegate void InJumpingEventHandler();
+		// Eventos de señal para acciones del jugador.
+		[Signal] public delegate void InJumpingEventHandler();
 
 		private AnimatedSprite2D _animatedSprite;
 		private float _coyoteTimeCounter;
@@ -46,6 +46,10 @@ namespace ForceOfHell.Scripts.MainCharacter
 
 		/// <summary>Indica si el jugador está en proceso de muerte.</summary>
 		public bool IsDying { get; set; }
+		public bool CanClimb { get; set; }
+
+		/// <summary>Ancla horizontal de la escalera actual.</summary>
+		public float ClimbAnchorX { get; set; }
 
 		public override void _Ready()
 		{
@@ -70,15 +74,10 @@ namespace ForceOfHell.Scripts.MainCharacter
 			UpdateCoyoteTime((float)delta);
 			equip_weapon?.UpdateCooldown((float)delta);
 
-			if ((manaActual - equip_weapon.Cost) >= 0) 
-			{
+			if ((manaActual - equip_weapon.Cost) >= 0)
 				attack();
-				GD.Print(manaActual);
-			}
 			else
-			{
 				GD.Print("No tienes suficiente mana para usar el arma.");
-			}
 		}
 
 		/// <summary>Reproduce una animación. Ignora si el jugador está muriendo.</summary>
@@ -89,17 +88,22 @@ namespace ForceOfHell.Scripts.MainCharacter
 		}
 
 		/// <summary>Maneja el daño recibido por el jugador.</summary>
-		public async Task HitAsync()
+		public async Task HitAsync(int damange)
 		{
 			try
 			{
-				IsDying = true;
-
-				// Reproduce la animación de daño y espera a que termine.
-				if (_animatedSprite != null)
+				if ((health - damange) <= 0) 
 				{
-					_animatedSprite.Play("hit");
-					await ToSignal(_animatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
+					healthActual = 0;
+					await Die();
+				}
+				else
+				{
+					healthActual -= damange;
+					if (_animatedSprite != null)
+						_animatedSprite.Play("hit");
+					else
+						GD.PushError("[Player] No se ha asignado el nodo de animación.");
 				}
 			}
 			catch (Exception)
@@ -231,14 +235,24 @@ namespace ForceOfHell.Scripts.MainCharacter
 			if (animatedWeapon != null)
 				equip_weapon.ApplyRecoil(animatedWeapon, _animatedSprite.FlipH);
 
-            // Si el arma es cuerpo a cuerpo, no se instancia una bala.
-            if (equip_weapon.IsMeelee)
-				return; 
+			// Si el arma es cuerpo a cuerpo, no se instancia una bala.
+			if (equip_weapon.IsMeelee)
+				return;
 
-            var bulletInstance = (Bullet)CargarBullet.Instantiate();
+			var bulletInstance = (Bullet)CargarBullet.Instantiate();
 			bulletInstance.GlobalPosition = _animatedSprite.GlobalPosition;
 			bulletInstance.Configure(equip_weapon.direction, equip_weapon.Bullet);
 			GetTree().CurrentScene?.AddChild(bulletInstance);
+		}
+
+		public int GetManaMax()
+		{
+			return mana;
+		}
+
+		public int GetHealthMax()
+		{
+			return health;
 		}
 	}
 }

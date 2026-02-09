@@ -1,9 +1,36 @@
 [gd_scene format=3 uid="uid://brdqatwerl4tu"]
 
+[ext_resource type="Script" uid="uid://be3lq5ugnlmxo" path="res://Scripts/Objects/Door.cs" id="1_w3wt2"]
+[ext_resource type="Texture2D" uid="uid://d01mjs3575pya" path="res://Assets/Objects/Door.png" id="2_3tqrs"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7gp1f"]
 size = Vector2(30, 48)
 
-[node name="Puerta" type="Area2D" unique_id=116221728]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3wt2"]
+atlas = ExtResource("2_3tqrs")
+region = Rect2(24, 0, 24, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tqrs"]
+atlas = ExtResource("2_3tqrs")
+region = Rect2(0, 0, 24, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3gros"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3wt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tqrs")
+}],
+"loop": false,
+"name": &"door",
+"speed": 5.0
+}]
+
+[node name="Puerta" type="Area2D" unique_id=116221728 node_paths=PackedStringArray("_animatedSprite2D")]
+script = ExtResource("1_w3wt2")
+_animatedSprite2D = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=501747270]
 position = Vector2(-5, 13)
@@ -11,3 +38,10 @@ shape = SubResource("RectangleShape2D_7gp1f")
 debug_color = Color(0.78718317, 0.43105993, 0.06105703, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1305997915]
+texture_filter = 1
+position = Vector2(-5, 13)
+sprite_frames = SubResource("SpriteFrames_3gros")
+animation = &"door"
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="OnBodyExited"]

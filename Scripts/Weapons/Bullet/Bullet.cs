@@ -1,3 +1,4 @@
+using ForceOfHell.Scripts.Objects;
 using Godot;
 using System;
 
@@ -54,8 +55,35 @@ namespace ForceOfHell.Scripts.Weapons.Bullet
 		/// <summary>Elimina la bala al chocar con el terreno.</summary>
 		private void OnBodyEntered(Node body)
 		{
-			if (body.IsInGroup("Terreno"))
+			HandleCollision(body);
+		}
+
+		/// <summary>
+		/// Handles logic when another Area2D enters the monitored area.
+		/// </summary>
+		/// <param name="area">The Area2D instance that has entered the area. Cannot be null.</param>
+		private void OnAreaEntered(Area2D area)
+		{
+			HandleCollision(area);
+		}
+
+		/// <summary>
+		/// Handles collision logic when the current object interacts with the specified node.
+		/// </summary>
+		/// <remarks>If the collided node belongs to the "Terreno" group, the current object is removed from the
+		/// scene. If the node is a Box, it receives damage and the current object is then removed.</remarks>
+		/// <param name="node">The node that the current object has collided with. Must not be null.</param>
+		private void HandleCollision(Node node)
+		{
+			if (node.IsInGroup("Terreno"))
 			{
+				QueueFree();
+				return;
+			}
+
+			if (node is Box b)
+			{
+				b.TakeDamage();
 				QueueFree();
 			}
 		}

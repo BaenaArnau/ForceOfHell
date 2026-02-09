@@ -70,4 +70,5 @@ scale = Vector2(1.0314839, 1)
 sprite_frames = SubResource("SpriteFrames_fg365")
 animation = &"FireBall"
 
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]

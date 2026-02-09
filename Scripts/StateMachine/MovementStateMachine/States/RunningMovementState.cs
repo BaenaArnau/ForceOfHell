@@ -23,10 +23,16 @@ namespace ForceOfHell.Scripts.StateMachine.MovementStateMachine.States
         
         public override void Update(double delta)
         {
+            if (_player.CanClimb && (Input.IsActionPressed("move_up") || Input.IsActionPressed("move_down")))
+            {
+                stateMachine.TransitionTo("ClimbMovementState");
+                return;
+            }
+
             if (!_player.IsOnFloor())
             {
-                stateMachine.TransitionTo(_player.Velocity.Y < 0 
-                    ? "JumpingMovementState" 
+                stateMachine.TransitionTo(_player.Velocity.Y < 0
+                    ? "JumpingMovementState"
                     : "FallingMovementState");
                 return;
             }

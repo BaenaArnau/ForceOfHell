@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cxdhqloo3c4lw"]
+
+[ext_resource type="Script" uid="uid://dnuhocvo3sy1f" path="res://Scripts/Objects/Box.cs" id="1_4wv0o"]
+[ext_resource type="Texture2D" uid="uid://cp4w757ydtrp4" path="res://Assets/Objects/Box.png" id="1_ooei0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hld6t"]
+atlas = ExtResource("1_ooei0")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8epr"]
+atlas = ExtResource("1_ooei0")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohf7q"]
+atlas = ExtResource("1_ooei0")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5cq42"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hld6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8epr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohf7q")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iy6yp"]
+size = Vector2(24, 24)
+
+[node name="Caja" type="RigidBody2D" unique_id=855890718 node_paths=PackedStringArray("_animatedSprite2D", "_collisionShape2D")]
+script = ExtResource("1_4wv0o")
+_animatedSprite2D = NodePath("AnimatedSprite2D")
+_collisionShape2D = NodePath("CollisionShape2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1058384921]
+sprite_frames = SubResource("SpriteFrames_5cq42")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1873014715]
+shape = SubResource("RectangleShape2D_iy6yp")
+debug_color = Color(0.41768008, 0.6049678, 3.85046e-07, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cahg12e0eh6s6"]
+
+[ext_resource type="Texture2D" uid="uid://cske5itychj3w" path="res://Assets/Objects/manaPotion.png" id="1_076jj"]
+[ext_resource type="Script" uid="uid://chmp65y2lmvho" path="res://Scripts/Objects/ManaPotion.cs" id="1_wojd1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wojd1"]
+
+[node name="ManaPotion" type="Area2D" unique_id=639283068]
+texture_filter = 1
+script = ExtResource("1_wojd1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1853933130]
+shape = SubResource("CircleShape2D_wojd1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=151873520]
+position = Vector2(0, -4)
+texture = ExtResource("1_076jj")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

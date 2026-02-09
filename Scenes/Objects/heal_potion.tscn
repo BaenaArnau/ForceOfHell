@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bwbh78tshv1hu"]
+
+[ext_resource type="Script" uid="uid://ba37eyyfxtuqw" path="res://Scripts/Objects/HealPotion.cs" id="1_2yd2r"]
+[ext_resource type="Texture2D" uid="uid://c1medmtme3h0j" path="res://Assets/Objects/healPotion.png" id="1_8q7r5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2yd2r"]
+
+[node name="HealPotion" type="Area2D" unique_id=374814457]
+texture_filter = 1
+script = ExtResource("1_2yd2r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1476849626]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_2yd2r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1915394952]
+texture = ExtResource("1_8q7r5")
