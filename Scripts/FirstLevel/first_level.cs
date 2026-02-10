@@ -9,16 +9,13 @@ namespace ForceOfHell.Scripts.FirstLevel
 		[Export] public PackedScene _manaPotion;
 		[Export] public PackedScene _healPotion;
 
-		// Called when the node enters the scene tree for the first time.
-		public override void _Ready()
-		{
-		}
-
-		// Called every frame. 'delta' is the elapsed time since the previous frame.
-		public override void _Process(double delta)
-		{
-		}
-
+		/// <summary>
+		/// Generates and adds a new item to the scene at the specified position based on the provided item name.
+		/// </summary>
+		/// <remarks>If an unsupported item name is provided, an error is logged and no item is generated.</remarks>
+		/// <param name="position">The position, in 2D coordinates, where the item will be placed in the scene.</param>
+		/// <param name="name">The name of the item to generate. Supported values are "weapon", "manaPotion", and "healPotion". The comparison is
+		/// case-sensitive.</param>
 		public void GenerateItem(Vector2 position, string name)
 		{
 			if (name == "weapon")

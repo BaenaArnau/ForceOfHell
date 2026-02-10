@@ -1,4 +1,5 @@
 using ForceOfHell.Scripts.MainCharacter;
+using ForceOfHell.Scripts.Objects;
 using Godot;
 using System;
 using System.Diagnostics;
@@ -41,7 +42,7 @@ namespace ForceOfHell.Scripts.Weapons
 		public Vector2 direction;
 
 		/// <summary>Tiempo restante hasta permitir otro disparo.</summary>
-		private float _fireCooldown;
+		public float _fireCooldown;
 
 		/// <summary>Ángulo de retroceso en grados al disparar.</summary>
 		private const float RecoilAngleDeg = 15f;
@@ -59,12 +60,6 @@ namespace ForceOfHell.Scripts.Weapons
 		public override void _Ready()
 		{
 			this.SetWeapon(0);
-		}
-
-		/// <summary>Actualización por frame (no usada actualmente).</summary>
-		public override void _Process(double delta)
-		{
-
 		}
 
 		/// <summary>Configura las propiedades del arma desde los datos.</summary>

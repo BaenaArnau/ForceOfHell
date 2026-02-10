@@ -47,6 +47,8 @@ namespace ForceOfHell.Scripts.Weapons
 
 				_popup.Visible = false;
 				_popup.Size = (Vector2I)_popup.GetContentsMinimumSize();
+				_popup.Unfocusable = true;
+				_popup.GuiDisableInput = true;
 			}
 
 			AssignRandomWeapon();
@@ -68,6 +70,11 @@ namespace ForceOfHell.Scripts.Weapons
 			Position = _basePosition + new Vector2(0f, offsetY);
 		}
 
+		/// <summary>
+		/// Selects a weapon at random from the available weapons and assigns it to the current instance.
+		/// </summary>
+		/// <remarks>If no weapons are available, the method logs an error and does not assign a weapon. The selection
+		/// is uniformly random among all available weapons.</remarks>
 		private void AssignRandomWeapon()
 		{
 			var weapons = ReadWeapons.Weapons;
@@ -92,6 +99,13 @@ namespace ForceOfHell.Scripts.Weapons
 			}
 		}
 
+		/// <summary>
+		/// Handles the event when a node enters the information area, displaying weapon details in the popup if the node is a
+		/// player.
+		/// </summary>
+		/// <remarks>If the popup is not available or the entering node is not a player, no action is taken.</remarks>
+		/// <param name="body">The node that has entered the information area. Only nodes representing the player will trigger the display of
+		/// weapon information.</param>
 		private void OnInfoAreaEntered(Node body)
 		{
 			if (body is not Player || _popup == null)
@@ -106,12 +120,22 @@ namespace ForceOfHell.Scripts.Weapons
 			PositionPopupAboveWeapon();
 		}
 
+		/// <summary>
+		/// Handles the event when a node exits the information area.
+		/// </summary>
+		/// <param name="body">The node that has exited the information area. If the node is a player, the information popup will be hidden.</param>
 		private void OnInfoAreaExited(Node body)
 		{
 			if (body is Player)
 				_popup?.Hide();
 		}
 
+		/// <summary>
+		/// Positions the popup UI element directly above the weapon sprite on the screen.
+		/// </summary>
+		/// <remarks>This method calculates the popup's position based on the weapon sprite's current screen
+		/// coordinates and displays the popup above it with a vertical offset. If the popup is not initialized, the method
+		/// does nothing.</remarks>
 		private void PositionPopupAboveWeapon()
 		{
 			if (_popup == null)
@@ -127,10 +151,25 @@ namespace ForceOfHell.Scripts.Weapons
 			_popup.Popup(new Rect2I(popupPos, size));
 		}
 
+		/// <summary>
+		/// Handles the event when a body enters the trigger area, granting mana and updating the player's weapon if
+		/// applicable.
+		/// </summary>
+		/// <remarks>This method is typically connected to a physics or area trigger event. It only affects nodes of
+		/// type Player and performs no action for other node types.</remarks>
+		/// <param name="body">The node that has entered the trigger area. If the node is a player with a matching equipped weapon, mana is
+		/// granted and the weapon is updated.</param>
 		private void OnBodyEntered(Node body)
 		{
 			if (body is Player player)
 			{
+				if (player.equip_weapon.Id == Weapon.Id)
+				{
+					player.manaActual += 50;
+					if (player.manaActual > player.GetManaMax())
+						player.manaActual = player.GetManaMax();
+				}
+			   
 				player.SetAnimation("PickUp");
 				player.ChangeWeapon(Weapon.Id);
 				QueueFree();

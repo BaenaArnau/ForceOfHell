@@ -83,7 +83,7 @@ namespace ForceOfHell.Scripts.Weapons.Bullet
 
 			if (node is Box b)
 			{
-				b.TakeDamage();
+				b.TakeDamage(false);
 				QueueFree();
 			}
 		}

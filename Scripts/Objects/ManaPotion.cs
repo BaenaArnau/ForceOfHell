@@ -26,6 +26,13 @@ public partial class ManaPotion : Area2D
 		Position = _basePosition + new Vector2(0f, offsetY);
 	}
 
+	/// <summary>
+	/// Handles the event when a body enters the associated area and restores mana to the player if applicable.
+	/// </summary>
+	/// <remarks>This method is typically connected to an area or trigger in the scene. If the entering node is a
+	/// player, the player's mana is increased by a predefined amount, up to the maximum allowed. The area is then removed
+	/// from the scene.</remarks>
+	/// <param name="body">The node that has entered the area. If the node is a player, its mana will be increased.</param>
 	private void OnBodyEntered(Node body)
 	{
 		if (body is Player player)

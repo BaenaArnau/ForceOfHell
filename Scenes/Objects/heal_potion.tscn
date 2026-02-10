@@ -15,3 +15,5 @@ shape = SubResource("CapsuleShape2D_2yd2r")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1915394952]
 texture = ExtResource("1_8q7r5")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

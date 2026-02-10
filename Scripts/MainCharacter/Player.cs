@@ -1,3 +1,4 @@
+using ForceOfHell.Scripts.Objects;
 using ForceOfHell.Scripts.Weapons;
 using ForceOfHell.Scripts.Weapons.Bullet;
 using Godot;
@@ -19,7 +20,7 @@ namespace ForceOfHell.Scripts.MainCharacter
 		private const float WeaponOffsetLeft = 0f;
 		private const float WeaponOffsetRight = 13f;
 
-		private Weapons.Weapons equip_weapon;
+		public Weapons.Weapons equip_weapon;
 		private const int mana = 100;
 		private const int health = 100;
 
@@ -28,6 +29,9 @@ namespace ForceOfHell.Scripts.MainCharacter
 
 		// Nodo de animación del arma, asignado desde el editor.
 		[Export] private AnimatedSprite2D animatedWeapon;
+
+		[Export] private Area2D area2D;
+
 		// Escena de la bala, asignada desde el editor.
 		[Export] public PackedScene CargarBullet { get; set; }
 
@@ -51,12 +55,18 @@ namespace ForceOfHell.Scripts.MainCharacter
 		/// <summary>Ancla horizontal de la escalera actual.</summary>
 		public float ClimbAnchorX { get; set; }
 
+		/// <summary>
+		/// Initializes the node when it enters the scene tree. Sets up the main weapon and sprite components, and configures
+		/// the monitoring state of the area.
+		/// </summary>
 		public override void _Ready()
 		{
 			// Inicializa arma y sprite principal.
 			equip_weapon = new Weapons.Weapons();
 			_animatedSprite = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
 			equip_weapon.SetWeapon(0);
+			area2D.Monitoring = false;
+
 		}
 
 		/// <summary>
@@ -73,6 +83,10 @@ namespace ForceOfHell.Scripts.MainCharacter
 			UpdateSpriteDirection();
 			UpdateCoyoteTime((float)delta);
 			equip_weapon?.UpdateCooldown((float)delta);
+			if ((equip_weapon._fireCooldown > 0f && equip_weapon._fireCooldown != equip_weapon.FireRate) && equip_weapon.IsMeelee)
+				area2D.Monitoring = true;
+			else
+				area2D.Monitoring = false;
 
 			if ((manaActual - equip_weapon.Cost) >= 0)
 				attack();
@@ -177,7 +191,12 @@ namespace ForceOfHell.Scripts.MainCharacter
 			{
 				animatedWeapon.FlipH = nextFlip;
 				var xOffset = nextFlip ? WeaponOffsetLeft : WeaponOffsetRight;
-				animatedWeapon.Position = new Vector2(xOffset, animatedWeapon.Position.Y);
+				animatedWeapon.Position = new Vector2((xOffset - 6), animatedWeapon.Position.Y);
+			}
+
+			if (area2D != null) 
+			{
+				area2D.Position = new Vector2((nextFlip ? -14 : 14), area2D.Position.Y);
 			}
 		}
 
@@ -236,23 +255,63 @@ namespace ForceOfHell.Scripts.MainCharacter
 				equip_weapon.ApplyRecoil(animatedWeapon, _animatedSprite.FlipH);
 
 			// Si el arma es cuerpo a cuerpo, no se instancia una bala.
-			if (equip_weapon.IsMeelee)
+			if (equip_weapon.IsMeelee) 
+			{
 				return;
-
+			}
+				
 			var bulletInstance = (Bullet)CargarBullet.Instantiate();
 			bulletInstance.GlobalPosition = _animatedSprite.GlobalPosition;
 			bulletInstance.Configure(equip_weapon.direction, equip_weapon.Bullet);
 			GetTree().CurrentScene?.AddChild(bulletInstance);
 		}
 
+		/// <summary>
+		/// Gets the maximum mana value for the current instance.
+		/// </summary>
+		/// <returns>The maximum amount of mana available. The value is always non-negative.</returns>
 		public int GetManaMax()
 		{
 			return mana;
 		}
 
+		/// <summary>
+		/// Gets the maximum health value for the current instance.
+		/// </summary>
+		/// <returns>The maximum health as an integer. The value represents the upper limit of health for this instance.</returns>
 		public int GetHealthMax()
 		{
 			return health;
+		}
+
+		/// <summary>
+		/// Handles logic when the specified area enters the current object.
+		/// </summary>
+		/// <param name="area">The area that has entered and triggered the event. Cannot be null.</param>
+		private void OnAreaEntered(Area2D area) 
+		{
+			HandleCollision(area);
+		}
+
+		/// <summary>
+		/// Handles the event when a body enters the node's collision area.
+		/// </summary>
+		/// <param name="body">The node representing the body that has entered the collision area. Cannot be null.</param>
+		private void OnBodyEntered(Node body) 
+		{
+			HandleCollision(body);
+		}
+
+		/// <summary>
+		/// Handles collision logic for the specified node, applying damage if the node is a box.
+		/// </summary>
+		/// <param name="node">The node involved in the collision. If the node is a box, damage will be applied.</param>
+		private void HandleCollision(Node node)
+		{
+			if (node is Box b)
+			{
+				b.TakeDamage(true);
+			}
 		}
 	}
 }

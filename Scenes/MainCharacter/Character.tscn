@@ -233,20 +233,24 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_erg8x"]
 size = Vector2(15, 20)
 
-[node name="Character" type="CharacterBody2D" unique_id=2055695245 node_paths=PackedStringArray("animatedWeapon") groups=["MainCharacter"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y023f"]
+size = Vector2(6, 25)
+
+[node name="Character" type="CharacterBody2D" unique_id=2055695245 node_paths=PackedStringArray("animatedWeapon", "area2D") groups=["MainCharacter"]]
 script = ExtResource("1_anqvw")
-animatedWeapon = NodePath("Weapon")
+animatedWeapon = NodePath("AnimatedSprite2D2")
+area2D = NodePath("AreaMelee")
 CargarBullet = ExtResource("2_sb6ov")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=684299310]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(8, 8)
+position = Vector2(1, -2)
 sprite_frames = SubResource("SpriteFrames_da458")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=151177965]
-position = Vector2(7.5, 10)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_erg8x")
 
 [node name="MovementStateMachine" type="Node" parent="." unique_id=1663697822]
@@ -279,11 +283,16 @@ position_smoothing_enabled = true
 script = ExtResource("13_dc8fv")
 player = NodePath("..")
 
-[node name="Weapon" parent="." unique_id=581127003 instance=ExtResource("8_5l7sn")]
-position = Vector2(14.000001, 7)
-scale = Vector2(0.99999994, 1)
-animation = &"Staff"
-frame = 9
-script = null
+[node name="AnimatedSprite2D2" parent="." unique_id=1117934843 instance=ExtResource("8_5l7sn")]
+position = Vector2(5, -2)
+
+[node name="AreaMelee" type="Area2D" parent="." unique_id=2069957134]
+
+[node name="CollisionMelee" type="CollisionShape2D" parent="AreaMelee" unique_id=1451367320]
+position = Vector2(14, -1)
+shape = SubResource("RectangleShape2D_y023f")
+debug_color = Color(0.58817625, 0.54845077, 0.05039245, 0.41960785)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="AreaMelee" to="." method="OnAreaEntered"]
+[connection signal="body_entered" from="AreaMelee" to="." method="OnBodyEntered"]

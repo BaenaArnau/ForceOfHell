@@ -31,14 +31,26 @@ namespace ForceOfHell.Scripts.StateMachine.MovementStateMachine.States
 		{
 			if (!_player.CanClimb)
 			{
-				stateMachine.TransitionTo(_player.IsOnFloor()
-					? (Mathf.Abs(_player.Velocity.X) > 0.1f ? "RunningMovementState" : "IdleMovementState")
-					: "FallingMovementState");
+				if (_player.IsOnFloor())
+				{
+					stateMachine.TransitionTo(Mathf.Abs(_player.Velocity.X) > 0.1f
+						? "RunningMovementState"
+						: "IdleMovementState");
+				}
+
+				return;
 			}
 		}
 
 		public override void UpdatePhysics(double delta)
 		{
+			if (!_player.CanClimb)
+			{
+				_player.Velocity = Vector2.Zero;
+				_player.MoveAndSlide();
+				return;
+			}
+
 			SnapToLadder();
 
 			float moveY = Input.GetActionStrength("move_down") - Input.GetActionStrength("move_up");
@@ -50,7 +62,9 @@ namespace ForceOfHell.Scripts.StateMachine.MovementStateMachine.States
 
 		public override void HandleInput(InputEvent ev)
 		{
-			if (ev.IsActionPressed("jump"))
+			if (ev.IsActionPressed("jump") &&
+				!Input.IsActionPressed("move_up") &&
+				!Input.IsActionPressed("move_down"))
 			{
 				_player.Velocity = _player.Velocity with { Y = PlayerType.JumpVelocity };
 				stateMachine.TransitionTo("JumpingMovementState");
