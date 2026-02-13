@@ -105,7 +105,7 @@ namespace ForceOfHell.Scripts.MainCharacter
         {
             try
             {
-                if ((health - damange) <= 0)
+                if ((healthActual - damange) <= 0)
                 {
                     healthActual = 0;
                     await Die();

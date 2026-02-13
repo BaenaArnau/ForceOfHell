@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c700rac6sp6at"]
 
 [ext_resource type="Texture2D" uid="uid://dcwj32rudskf0" path="res://Assets/Enemies/Skeleton/Skeleton 1 Attack.png" id="1_kx4xq"]
-[ext_resource type="Script" uid="uid://c3h2e8xpegb6n" path="res://Scenes/Enemies/Skeleton_1.cs" id="1_yocjf"]
+[ext_resource type="Script" uid="uid://c3h2e8xpegb6n" path="res://Scripts/Enemies/Skeleton.cs" id="1_yocjf"]
 [ext_resource type="PackedScene" uid="uid://bkcbeh8uuparu" path="res://Scenes/Enemies/Weapons/Arrow.tscn" id="2_qe480"]
 [ext_resource type="Texture2D" uid="uid://r28p041xasf0" path="res://Assets/Enemies/Skeleton/Skeleton 1 Idle.png" id="2_yocjf"]
 [ext_resource type="Texture2D" uid="uid://fi8q362k2an0" path="res://Assets/Enemies/Skeleton/Skeleton 1 Walk.png" id="3_qe480"]

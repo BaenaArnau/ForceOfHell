@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cxdhqloo3c4lw" path="res://Scenes/Objects/caja.tscn" id="9_loyn8"]
 [ext_resource type="PackedScene" uid="uid://div88w48egwfc" path="res://Scenes/Objects/ladder.tscn" id="13_iy6yp"]
 [ext_resource type="AudioStream" uid="uid://c2adrnhlmpbjo" path="res://Assets/Sounds/Music/lolivac-fantasy-forest.mp3" id="14_e7txn"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/Balrog.tscn" id="15_vv7h8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8qcnd"]
 texture = ExtResource("1_hvaqb")
@@ -130,11 +131,16 @@ sources/1 = SubResource("TileSetAtlasSource_8qcnd")
 sources/2 = SubResource("TileSetAtlasSource_rec3u")
 sources/3 = SubResource("TileSetAtlasSource_qd526")
 
-[node name="FirstLevel" type="Node" unique_id=1468214209]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vv7h8"]
+size = Vector2(464, 266)
+
+[node name="FirstLevel" type="Node" unique_id=1468214209 node_paths=PackedStringArray("_player", "_balrog")]
 script = ExtResource("1_hld6t")
 _weapon = ExtResource("6_rec3u")
 _manaPotion = ExtResource("3_ohf7q")
 _healPotion = ExtResource("4_iy6yp")
+_player = NodePath("Character")
+_balrog = NodePath("Balrog")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=230490180]
 texture_filter = 1
@@ -361,3 +367,16 @@ scale = Vector2(1, 4.5)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1191867845]
 stream = ExtResource("14_e7txn")
 autoplay = true
+
+[node name="Balrog" parent="." unique_id=2037420680 instance=ExtResource("15_vv7h8")]
+position = Vector2(2668, 357)
+
+[node name="AreaBalrog" type="Area2D" parent="." unique_id=1381403885]
+
+[node name="CollisionShapeBalrog" type="CollisionShape2D" parent="AreaBalrog" unique_id=222434244]
+position = Vector2(2486, 277)
+shape = SubResource("RectangleShape2D_vv7h8")
+debug_color = Color(0.818878, 0.0018487984, 0.96998173, 0.41960785)
+
+[connection signal="body_entered" from="AreaBalrog" to="." method="OnBossArenaBodyEntered"]
+[connection signal="body_exited" from="AreaBalrog" to="." method="OnBossArenaBodyExited"]

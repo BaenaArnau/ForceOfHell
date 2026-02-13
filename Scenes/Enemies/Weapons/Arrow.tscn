@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bkcbeh8uuparu"]
 
-[ext_resource type="Script" uid="uid://eqpoytldjl24" path="res://Scenes/Enemies/Weapons/Arrow.cs" id="1_bsfdi"]
+[ext_resource type="Script" uid="uid://eqpoytldjl24" path="res://Scripts/Enemies/Weapons/Arrow.cs" id="1_bsfdi"]
 [ext_resource type="Texture2D" uid="uid://cwton608newqd" path="res://Assets/Enemies/Weapons/Arrow.png" id="2_cstfh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7v023"]
