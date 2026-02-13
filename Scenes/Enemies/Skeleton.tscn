@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://c700rac6sp6at"]
+
+[ext_resource type="Texture2D" uid="uid://dcwj32rudskf0" path="res://Assets/Enemies/Skeleton/Skeleton 1 Attack.png" id="1_kx4xq"]
+[ext_resource type="Script" uid="uid://c3h2e8xpegb6n" path="res://Scenes/Enemies/Skeleton_1.cs" id="1_yocjf"]
+[ext_resource type="PackedScene" uid="uid://bkcbeh8uuparu" path="res://Scenes/Enemies/Weapons/Arrow.tscn" id="2_qe480"]
+[ext_resource type="Texture2D" uid="uid://r28p041xasf0" path="res://Assets/Enemies/Skeleton/Skeleton 1 Idle.png" id="2_yocjf"]
+[ext_resource type="Texture2D" uid="uid://fi8q362k2an0" path="res://Assets/Enemies/Skeleton/Skeleton 1 Walk.png" id="3_qe480"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yocjf"]
+size = Vector2(246, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e88w4"]
+size = Vector2(420, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vhe7"]
+size = Vector2(24, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arql0"]
+atlas = ExtResource("1_kx4xq")
+region = Rect2(0, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qryk"]
+atlas = ExtResource("1_kx4xq")
+region = Rect2(28, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8a5s"]
+atlas = ExtResource("1_kx4xq")
+region = Rect2(56, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi7pc"]
+atlas = ExtResource("1_kx4xq")
+region = Rect2(84, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkfug"]
+atlas = ExtResource("1_kx4xq")
+region = Rect2(112, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msjn4"]
+atlas = ExtResource("1_kx4xq")
+region = Rect2(140, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvghf"]
+atlas = ExtResource("2_yocjf")
+region = Rect2(0, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqnwt"]
+atlas = ExtResource("2_yocjf")
+region = Rect2(28, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsy07"]
+atlas = ExtResource("3_qe480")
+region = Rect2(0, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70d8h"]
+atlas = ExtResource("3_qe480")
+region = Rect2(28, 0, 28, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ye7d1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arql0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qryk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8a5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hi7pc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkfug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msjn4")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 7.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvghf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqnwt")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsy07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70d8h")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qe480"]
+radius = 15.0
+
+[node name="Skeleton1" type="CharacterBody2D" unique_id=927594888]
+script = ExtResource("1_yocjf")
+Arrow = ExtResource("2_qe480")
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=287516635]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=212978952]
+shape = SubResource("RectangleShape2D_yocjf")
+debug_color = Color(0.59652007, 0.5421559, 0.16720352, 0.41960785)
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=340599823]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1509733397]
+shape = SubResource("RectangleShape2D_e88w4")
+debug_color = Color(0.17314765, 0.62780553, 0.4145739, 0.41960785)
+
+[node name="SkeletonCollision" type="CollisionShape2D" parent="." unique_id=1818774009]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_8vhe7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=138166994]
+texture_filter = 3
+sprite_frames = SubResource("SpriteFrames_ye7d1")
+animation = &"Attack"
+autoplay = "Idle"
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=1177387938]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=348757357]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_qe480")
+
+[connection signal="body_entered" from="AttackArea" to="." method="OnAttackAreaEntered"]
+[connection signal="body_exited" from="AttackArea" to="." method="OnAttackAreaExited"]
+[connection signal="body_entered" from="DetectionArea" to="." method="OnAreaDetectionBodyEntered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="OnAreaDetectionBodyExited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="OnAnimationFinished"]

@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://ditovhh4hrqrd"]
+
+[ext_resource type="Texture2D" uid="uid://qsrhot51hian" path="res://Assets/Enemies/Goblin/Goblin 1 Attack.png" id="1_2ag8r"]
+[ext_resource type="Script" uid="uid://d3qmwkkakxllp" path="res://Scenes/Enemies/Goblin_1.cs" id="1_ewbnj"]
+[ext_resource type="Texture2D" uid="uid://onwwle2myleu" path="res://Assets/Enemies/Goblin/Goblin 1 Idle.png" id="2_ewbnj"]
+[ext_resource type="Texture2D" uid="uid://ks85fogpo03d" path="res://Assets/Enemies/Goblin/Goblin 1 Walk.png" id="3_xq0xb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewbnj"]
+size = Vector2(420, 140)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jp760"]
+radius = 15.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xq0xb"]
+size = Vector2(19, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jp760"]
+atlas = ExtResource("1_2ag8r")
+region = Rect2(0, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a844"]
+atlas = ExtResource("1_2ag8r")
+region = Rect2(28, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adqnq"]
+atlas = ExtResource("1_2ag8r")
+region = Rect2(56, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6trl6"]
+atlas = ExtResource("1_2ag8r")
+region = Rect2(84, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbm62"]
+atlas = ExtResource("1_2ag8r")
+region = Rect2(112, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhhi5"]
+atlas = ExtResource("1_2ag8r")
+region = Rect2(140, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0wnp"]
+atlas = ExtResource("2_ewbnj")
+region = Rect2(0, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b058"]
+atlas = ExtResource("2_ewbnj")
+region = Rect2(28, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhrs3"]
+atlas = ExtResource("3_xq0xb")
+region = Rect2(0, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjkxq"]
+atlas = ExtResource("3_xq0xb")
+region = Rect2(28, 0, 28, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sba5v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jp760")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a844")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adqnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6trl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbm62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhhi5")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 7.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0wnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5b058")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhrs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjkxq")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ewbnj"]
+radius = 15.0
+
+[node name="Goblin 1" type="CharacterBody2D" unique_id=970398414]
+script = ExtResource("1_ewbnj")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=386008203]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1461666194]
+shape = SubResource("RectangleShape2D_ewbnj")
+debug_color = Color(0.17314765, 0.62780553, 0.4145739, 0.41960785)
+
+[node name="WeaponCollision" type="Area2D" parent="." unique_id=1416678197]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponCollision" unique_id=76025660]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_jp760")
+debug_color = Color(0.6294752, 0.530408, 5.7756904e-07, 0.41960785)
+
+[node name="GoblinCollision" type="CollisionShape2D" parent="." unique_id=648368764]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_xq0xb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351738176]
+texture_filter = 3
+sprite_frames = SubResource("SpriteFrames_sba5v")
+animation = &"Attack"
+autoplay = "Idle"
+frame = 5
+frame_progress = 1.0
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=996178659]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=2063373778]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_ewbnj")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="OnAreaDetectionBodyEntered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="OnAreaDetectionBodyExited"]
+[connection signal="body_entered" from="WeaponCollision" to="." method="OnWeaponCollisionAreaBodyEntered"]
+[connection signal="body_entered" from="DamageArea" to="." method="OnDamageAreaBodyEntered"]

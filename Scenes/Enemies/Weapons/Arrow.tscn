@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bkcbeh8uuparu"]
+
+[ext_resource type="Script" uid="uid://eqpoytldjl24" path="res://Scenes/Enemies/Weapons/Arrow.cs" id="1_bsfdi"]
+[ext_resource type="Texture2D" uid="uid://cwton608newqd" path="res://Assets/Enemies/Weapons/Arrow.png" id="2_cstfh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7v023"]
+size = Vector2(3, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsfdi"]
+atlas = ExtResource("2_cstfh")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cstfh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsfdi")
+}],
+"loop": true,
+"name": &"Arrow",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsfdi"]
+size = Vector2(3, 3)
+
+[node name="Arrow" type="RigidBody2D" unique_id=627626139]
+script = ExtResource("1_bsfdi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=437515728]
+position = Vector2(5.5, 0.5)
+shape = SubResource("RectangleShape2D_7v023")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=134108595]
+texture_filter = 3
+sprite_frames = SubResource("SpriteFrames_cstfh")
+animation = &"Arrow"
+
+[node name="ArrowDamage" type="Area2D" parent="." unique_id=2092973272]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowDamage" unique_id=838469546]
+position = Vector2(5.5, 0.5)
+shape = SubResource("RectangleShape2D_bsfdi")
+
+[connection signal="body_entered" from="ArrowDamage" to="." method="OnArrowDamageBodyEntered"]

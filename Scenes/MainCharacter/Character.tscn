@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdukdfn4s4ccf"]
+[gd_scene format=3 uid="uid://bdukdfn4s4ccf"]
 
 [ext_resource type="Script" uid="uid://dfig3pl0s8svl" path="res://Scripts/MainCharacter/Player.cs" id="1_anqvw"]
 [ext_resource type="Texture2D" uid="uid://b6o831dummplb" path="res://Assets/MainCharacter/Gandor.png" id="1_ro1ak"]
@@ -22,34 +22,34 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_erg8x"]
 size = Vector2(19, 24)
 
-[node name="Character" type="CharacterBody2D" groups=["MainCharacter"]]
+[node name="Character" type="CharacterBody2D" unique_id=369013405 groups=["MainCharacter"]]
 script = ExtResource("1_anqvw")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=441716544]
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_da458")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=794510508]
 position = Vector2(7.5, 8)
 shape = SubResource("RectangleShape2D_erg8x")
 
-[node name="MovementStateMachine" type="Node" parent="."]
+[node name="MovementStateMachine" type="Node" parent="." unique_id=1346458704]
 script = ExtResource("3_5l7sn")
 initialState = NodePath("IdleMovementState")
 
-[node name="IdleMovementState" type="Node" parent="MovementStateMachine"]
+[node name="IdleMovementState" type="Node" parent="MovementStateMachine" unique_id=499611632]
 script = ExtResource("4_sb6ov")
 
-[node name="RunningMovementState" type="Node" parent="MovementStateMachine"]
+[node name="RunningMovementState" type="Node" parent="MovementStateMachine" unique_id=1196772743]
 script = ExtResource("5_uwjxv")
 
-[node name="JumpingMovementState" type="Node" parent="MovementStateMachine"]
+[node name="JumpingMovementState" type="Node" parent="MovementStateMachine" unique_id=101401668]
 script = ExtResource("6_dveta")
 
-[node name="FallingMovementState" type="Node" parent="MovementStateMachine"]
+[node name="FallingMovementState" type="Node" parent="MovementStateMachine" unique_id=173572357]
 script = ExtResource("7_xi5gx")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1148367181]
 position_smoothing_enabled = true

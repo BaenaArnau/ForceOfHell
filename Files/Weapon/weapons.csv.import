@@ -15,3 +15,5 @@ dest_files=["res://Files/Weapon/weapons.damage.translation", "res://Files/Weapon
 
 compress=true
 delimiter=0
+unescape_keys=false
+unescape_translations=true
