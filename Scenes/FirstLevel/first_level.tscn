@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bxjwbmjrbuxag" path="res://Scenes/Objects/dead_zone.tscn" id="8_loyn8"]
 [ext_resource type="PackedScene" uid="uid://cxdhqloo3c4lw" path="res://Scenes/Objects/caja.tscn" id="9_loyn8"]
 [ext_resource type="PackedScene" uid="uid://div88w48egwfc" path="res://Scenes/Objects/ladder.tscn" id="13_iy6yp"]
+[ext_resource type="AudioStream" uid="uid://c2adrnhlmpbjo" path="res://Assets/Sounds/Music/lolivac-fantasy-forest.mp3" id="14_e7txn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8qcnd"]
 texture = ExtResource("1_hvaqb")
@@ -356,3 +357,7 @@ scale = Vector2(1, 6)
 [node name="Ladder10" parent="Escaleras" unique_id=1731461597 instance=ExtResource("13_iy6yp")]
 position = Vector2(612, 213)
 scale = Vector2(1, 4.5)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1191867845]
+stream = ExtResource("14_e7txn")
+autoplay = true

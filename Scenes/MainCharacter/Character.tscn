@@ -294,8 +294,9 @@ player = NodePath("..")
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D" unique_id=718083485]
 
 [node name="HealthProgressBar" type="ProgressBar" parent="Camera2D/CanvasLayer" unique_id=575061021 node_paths=PackedStringArray("_player")]
+texture_filter = 1
 offset_top = 14.0
-offset_right = 170.0
+offset_right = 233.0
 offset_bottom = 26.0
 theme_override_font_sizes/font_size = 6
 theme_override_styles/background = SubResource("StyleBoxFlat_n63a8")
@@ -303,8 +304,9 @@ script = ExtResource("15_g28bo")
 _player = NodePath("../../..")
 
 [node name="ManaProgressBar" type="ProgressBar" parent="Camera2D/CanvasLayer" unique_id=927299975 node_paths=PackedStringArray("_player")]
+texture_filter = 1
 offset_top = 30.0
-offset_right = 170.0
+offset_right = 233.0
 offset_bottom = 42.0
 theme_override_font_sizes/font_size = 6
 theme_override_styles/background = SubResource("StyleBoxFlat_spuuq")
