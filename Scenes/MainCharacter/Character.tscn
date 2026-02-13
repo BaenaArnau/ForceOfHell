@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://bsuqe4yrwqjdp" path="res://Scenes/Weapons/weapons.tscn" id="8_5l7sn"]
 [ext_resource type="Script" uid="uid://bfvbi3ul1tlys" path="res://Scripts/MainCharacter/Camera.cs" id="13_dc8fv"]
 [ext_resource type="Script" uid="uid://jciopkw0wtgg" path="res://Scripts/StateMachine/MovementStateMachine/States/ClimbMovementState.cs" id="13_y023f"]
+[ext_resource type="Script" uid="uid://41in6sukxcl2" path="res://Scripts/MainCharacter/HealthProgressBar.cs" id="15_g28bo"]
+[ext_resource type="Script" uid="uid://bludnap8hny52" path="res://Scripts/MainCharacter/ManaProgressBar.cs" id="16_n63a8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g28bo"]
 atlas = ExtResource("3_xi5gx")
@@ -233,6 +235,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_erg8x"]
 size = Vector2(15, 20)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n63a8"]
+bg_color = Color(0.4, 0.088000014, 0.09319992, 0.49411765)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spuuq"]
+bg_color = Color(0.42000002, 0.5746665, 1, 0.44313726)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y023f"]
 size = Vector2(6, 25)
 
@@ -283,13 +291,33 @@ position_smoothing_enabled = true
 script = ExtResource("13_dc8fv")
 player = NodePath("..")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D" unique_id=718083485]
+
+[node name="HealthProgressBar" type="ProgressBar" parent="Camera2D/CanvasLayer" unique_id=575061021 node_paths=PackedStringArray("_player")]
+offset_top = 14.0
+offset_right = 170.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 6
+theme_override_styles/background = SubResource("StyleBoxFlat_n63a8")
+script = ExtResource("15_g28bo")
+_player = NodePath("../../..")
+
+[node name="ManaProgressBar" type="ProgressBar" parent="Camera2D/CanvasLayer" unique_id=927299975 node_paths=PackedStringArray("_player")]
+offset_top = 30.0
+offset_right = 170.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 6
+theme_override_styles/background = SubResource("StyleBoxFlat_spuuq")
+script = ExtResource("16_n63a8")
+_player = NodePath("../../..")
+
 [node name="AnimatedSprite2D2" parent="." unique_id=1117934843 instance=ExtResource("8_5l7sn")]
 position = Vector2(5, -2)
 
 [node name="AreaMelee" type="Area2D" parent="." unique_id=2069957134]
+position = Vector2(14, -1)
 
 [node name="CollisionMelee" type="CollisionShape2D" parent="AreaMelee" unique_id=1451367320]
-position = Vector2(14, -1)
 shape = SubResource("RectangleShape2D_y023f")
 debug_color = Color(0.58817625, 0.54845077, 0.05039245, 0.41960785)
 
