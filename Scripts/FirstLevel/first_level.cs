@@ -1,5 +1,7 @@
+using ForceOfHell.Scripts.MainCharacter;
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 namespace ForceOfHell.Scripts.FirstLevel
 {
@@ -8,6 +10,8 @@ namespace ForceOfHell.Scripts.FirstLevel
 		[Export] public PackedScene _weapon;
 		[Export] public PackedScene _manaPotion;
 		[Export] public PackedScene _healPotion;
+		[Export] private Player _player;
+		[Export] private Balrog _balrog;
 
 		/// <summary>
 		/// Generates and adds a new item to the scene at the specified position based on the provided item name.
@@ -41,6 +45,26 @@ namespace ForceOfHell.Scripts.FirstLevel
 			}
 			else
 				GD.PushError("El Objeto no existe");
+		}
+		
+		public void OnBossArenaBodyEntered(Node2D body)
+		{
+			if (body is Player player)
+			{
+				GD.Print("Player entered the boss arena");
+				_balrog.BalrogActivate = true;
+				// Aquí puedes agregar la lógica para iniciar el combate con el jefe
+			}
+		}
+
+		public void OnBossArenaBodyExited(Node2D body)
+		{
+			if (body is Player player)
+			{
+				GD.Print("Player exited the boss arena");
+				_balrog.BalrogActivate = false;
+				// Aquí puedes agregar la lógica para finalizar el combate con el jefe
+			}
 		}
 	}
 }
