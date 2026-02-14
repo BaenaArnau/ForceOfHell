@@ -12,9 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://brdqatwerl4tu" path="res://Scenes/Objects/puerta.tscn" id="7_5cq42"]
 [ext_resource type="PackedScene" uid="uid://bxjwbmjrbuxag" path="res://Scenes/Objects/dead_zone.tscn" id="8_loyn8"]
 [ext_resource type="PackedScene" uid="uid://cxdhqloo3c4lw" path="res://Scenes/Objects/caja.tscn" id="9_loyn8"]
+[ext_resource type="PackedScene" uid="uid://ditovhh4hrqrd" path="res://Scenes/Enemies/Goblin.tscn" id="13_e7txn"]
 [ext_resource type="PackedScene" uid="uid://div88w48egwfc" path="res://Scenes/Objects/ladder.tscn" id="13_iy6yp"]
 [ext_resource type="AudioStream" uid="uid://c2adrnhlmpbjo" path="res://Assets/Sounds/Music/lolivac-fantasy-forest.mp3" id="14_e7txn"]
-[ext_resource type="PackedScene" path="res://Scenes/Enemies/Balrog.tscn" id="15_vv7h8"]
+[ext_resource type="PackedScene" uid="uid://c700rac6sp6at" path="res://Scenes/Enemies/Skeleton.tscn" id="14_vv7h8"]
+[ext_resource type="PackedScene" uid="uid://c57xv1hl2vwcu" path="res://Scenes/Enemies/Balrog.tscn" id="15_vv7h8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8qcnd"]
 texture = ExtResource("1_hvaqb")
@@ -140,7 +142,7 @@ _weapon = ExtResource("6_rec3u")
 _manaPotion = ExtResource("3_ohf7q")
 _healPotion = ExtResource("4_iy6yp")
 _player = NodePath("Character")
-_balrog = NodePath("Balrog")
+_balrog = NodePath("Enemigos/Balrog")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=230490180]
 texture_filter = 1
@@ -177,10 +179,6 @@ tile_set = SubResource("TileSet_gbkxx")
 z_index = 1
 texture_filter = 1
 position = Vector2(26, 418)
-
-[node name="DropedWeapon" parent="." unique_id=827756824 instance=ExtResource("6_rec3u")]
-texture_filter = 1
-position = Vector2(256, 438)
 
 [node name="DeadZone" parent="." unique_id=1639480769 instance=ExtResource("8_loyn8")]
 position = Vector2(-1619, 670)
@@ -368,15 +366,57 @@ scale = Vector2(1, 4.5)
 stream = ExtResource("14_e7txn")
 autoplay = true
 
-[node name="Balrog" parent="." unique_id=2037420680 instance=ExtResource("15_vv7h8")]
-position = Vector2(2668, 357)
-
 [node name="AreaBalrog" type="Area2D" parent="." unique_id=1381403885]
 
 [node name="CollisionShapeBalrog" type="CollisionShape2D" parent="AreaBalrog" unique_id=222434244]
 position = Vector2(2486, 277)
 shape = SubResource("RectangleShape2D_vv7h8")
 debug_color = Color(0.818878, 0.0018487984, 0.96998173, 0.41960785)
+
+[node name="Enemigos" type="Node2D" parent="." unique_id=1872461635]
+
+[node name="Goblin 1" parent="Enemigos" unique_id=970398414 instance=ExtResource("13_e7txn")]
+position = Vector2(345, 104)
+
+[node name="Goblin 2" parent="Enemigos" unique_id=437232762 instance=ExtResource("13_e7txn")]
+position = Vector2(577, 559)
+
+[node name="Goblin 3" parent="Enemigos" unique_id=1572830884 instance=ExtResource("13_e7txn")]
+position = Vector2(831, 515)
+
+[node name="Skeleton1" parent="Enemigos" unique_id=927594888 instance=ExtResource("14_vv7h8")]
+position = Vector2(596, 149)
+
+[node name="Skeleton2" parent="Enemigos" unique_id=647569049 instance=ExtResource("14_vv7h8")]
+position = Vector2(1157, 319)
+
+[node name="Skeleton3" parent="Enemigos" unique_id=2093722562 instance=ExtResource("14_vv7h8")]
+position = Vector2(651, 148)
+
+[node name="Skeleton4" parent="Enemigos" unique_id=1727463490 instance=ExtResource("14_vv7h8")]
+position = Vector2(1217, 318)
+
+[node name="Goblin 4" parent="Enemigos" unique_id=1522747764 instance=ExtResource("13_e7txn")]
+position = Vector2(1615, 507)
+
+[node name="Skeleton5" parent="Enemigos" unique_id=310402430 instance=ExtResource("14_vv7h8")]
+position = Vector2(2088, 321)
+
+[node name="Goblin 5" parent="Enemigos" unique_id=1522031697 instance=ExtResource("13_e7txn")]
+position = Vector2(1793, 510)
+
+[node name="Balrog" parent="Enemigos" unique_id=2037420680 node_paths=PackedStringArray("_player") instance=ExtResource("15_vv7h8")]
+position = Vector2(2668, 357)
+_player = NodePath("../../Character")
+
+[node name="Skeleton6" parent="Enemigos" unique_id=871385819 instance=ExtResource("14_vv7h8")]
+position = Vector2(554, 150)
+
+[node name="Skeleton7" parent="Enemigos" unique_id=2033312173 instance=ExtResource("14_vv7h8")]
+position = Vector2(1263, 313)
+
+[node name="Goblin 6" parent="Enemigos" unique_id=1867789424 instance=ExtResource("13_e7txn")]
+position = Vector2(953, 507)
 
 [connection signal="body_entered" from="AreaBalrog" to="." method="OnBossArenaBodyEntered"]
 [connection signal="body_exited" from="AreaBalrog" to="." method="OnBossArenaBodyExited"]

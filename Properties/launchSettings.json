@@ -6,8 +6,8 @@
     "Proyectos-Godot/ForceOfHell": {
       "commandName": "Executable",
       "executablePath": "E:\\Godot_v4.6-stable_mono_win64\\Godot_v4.6-stable_mono_win64\\Godot_v4.6-stable_mono_win64.exe",
-      "commandLineArgs": "--path \"D:\\Proyectos-Godot\\ForceOfHell\"",
-      "workingDirectory": "D:\\Proyectos-Godot"
+      "commandLineArgs": "--path \"D:\\Proyectos\\Proyectos-JAM\\ForceOfHell\"",
+      "workingDirectory": "D:\\Proyectos\\Proyectos-JAM"
     },
     "Proyectos-JAM/ForceOfHell": {
       "commandName": "Executable",

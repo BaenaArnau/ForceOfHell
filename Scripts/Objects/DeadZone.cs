@@ -1,10 +1,16 @@
-using Godot;
-using System;
+using ForceOfHell.Scripts.Enemies;
 using ForceOfHell.Scripts.MainCharacter;
+using Godot;
 
 
 namespace ForceOfHell.Scripts.Objects
 {
+    /// <summary>
+    /// Represents an area within the scene that eliminates player characters and certain enemies upon entry.
+    /// </summary>
+    /// <remarks>This class is typically used to define zones that trigger elimination behavior for players
+    /// and specific enemy types when they enter. After eliminating a player, the area removes itself from the scene. It
+    /// is commonly connected to area triggers in game scenes to enforce boundaries or hazards.</remarks>
     public partial class DeadZone : Area2D
     {
         /// <summary>
@@ -22,6 +28,14 @@ namespace ForceOfHell.Scripts.Objects
                 _ = player.Die();
                 QueueFree();
             }
+            if (body is Balrog b)
+                b.QueueFree();
+
+            if (body is Skeleton s)
+                s.QueueFree();
+
+            if (body is Goblin g)
+                g.QueueFree();
         }
     }
 }

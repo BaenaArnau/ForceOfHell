@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b44t7tpjoehgf"]
 
-[ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.cs" id="1_qgdf6"]
+[ext_resource type="Script" uid="uid://c20qkaxswpgmg" path="res://Scripts/MainMenu/MainMenu.cs" id="1_qgdf6"]
 [ext_resource type="Texture2D" uid="uid://c0l26u4oo4q10" path="res://Assets/Menu/Background.png" id="1_v763k"]
 [ext_resource type="Texture2D" uid="uid://mi0ny7jwc2p7" path="res://Assets/Menu/ForceOfHell.png" id="2_qgdf6"]
 

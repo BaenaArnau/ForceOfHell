@@ -1,3 +1,4 @@
+using ForceOfHell.Scripts.Enemies;
 using ForceOfHell.Scripts.Objects;
 using ForceOfHell.Scripts.Weapons.Bullet;
 using Godot;
@@ -7,8 +8,15 @@ using System.Threading.Tasks;
 namespace ForceOfHell.Scripts.MainCharacter
 {
     /// <summary>
-    /// Clase que representa al jugador.
+    /// Represents the main player character in the game, providing movement, health and mana management, weapon
+    /// handling, and animation control. Inherits from CharacterBody2D and exposes methods and properties for player
+    /// actions such as jumping, attacking, and changing weapons.
     /// </summary>
+    /// <remarks>This class manages player state and actions, including coyote time for improved jump
+    /// responsiveness, signal events for player actions, and collision handling with other game entities. It is
+    /// designed to be used as the central character controller in a platformer or action game, supporting both melee
+    /// and ranged combat. The player can equip different weapons, respond to damage, and trigger animations based on
+    /// game events.</remarks>
     public partial class Player : CharacterBody2D
     {
         public const float Speed = 200.0f;
@@ -29,7 +37,7 @@ namespace ForceOfHell.Scripts.MainCharacter
         // Nodo de animación del arma, asignado desde el editor.
         [Export] private AnimatedSprite2D animatedWeapon;
 
-        [Export] private Area2D area2D;
+        [Export] internal Area2D area2D;
 
         // Escena de la bala, asignada desde el editor.
         [Export] public PackedScene CargarBullet { get; set; }
@@ -93,14 +101,18 @@ namespace ForceOfHell.Scripts.MainCharacter
                 GD.Print("No tienes suficiente mana para usar el arma.");
         }
 
-        /// <summary>Reproduce una animación. Ignora si el jugador está muriendo.</summary>
+        /// <summary>
+        /// Reproduce una animación. Ignora si el jugador está muriendo.
+        /// </summary>
         public void SetAnimation(string animationName)
         {
             if (!IsDying && _animatedSprite != null)
                 _animatedSprite.Play(animationName);
         }
 
-        /// <summary>Maneja el daño recibido por el jugador.</summary>
+        /// <summary>
+        /// Maneja el daño recibido por el jugador.
+        /// </summary>
         public async Task HitAsync(int damange)
         {
             try
@@ -122,9 +134,6 @@ namespace ForceOfHell.Scripts.MainCharacter
             catch (Exception)
             {
                 // Asegurar recarga incluso si hay error.
-            }
-            finally
-            {
                 GetTree().CallDeferred(SceneTree.MethodName.ReloadCurrentScene);
             }
         }
@@ -251,13 +260,11 @@ namespace ForceOfHell.Scripts.MainCharacter
 
             // Si el arma es cuerpo a cuerpo, no se instancia una bala.
             if (equip_weapon.IsMeelee)
-            {
                 return;
-            }
 
             var bulletInstance = (Bullet)CargarBullet.Instantiate();
             bulletInstance.GlobalPosition = _animatedSprite.GlobalPosition;
-            bulletInstance.Configure(equip_weapon.direction, equip_weapon.Bullet);
+            bulletInstance.Configure(equip_weapon.direction, equip_weapon.Bullet, equip_weapon.Damage);
             GetTree().CurrentScene?.AddChild(bulletInstance);
         }
 
@@ -304,9 +311,16 @@ namespace ForceOfHell.Scripts.MainCharacter
         private void HandleCollision(Node node)
         {
             if (node is Box b)
-            {
                 b.TakeDamage(true);
-            }
+
+            if (node is Balrog balrog)
+                _ = balrog.DamageDealt(equip_weapon.Damage);
+
+            if (node is Skeleton s)
+                _ = s.DamageDealt(equip_weapon.Damage);
+
+            if (node is Goblin g)
+                _ = g.DamageDealt(equip_weapon.Damage);
         }
     }
 }

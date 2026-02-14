@@ -36,6 +36,7 @@ animations = [{
 size = Vector2(24, 24)
 
 [node name="Caja" type="RigidBody2D" unique_id=855890718 node_paths=PackedStringArray("_animatedSprite2D", "_collisionShape2D")]
+mass = 1000.0
 script = ExtResource("1_4wv0o")
 _animatedSprite2D = NodePath("AnimatedSprite2D")
 _collisionShape2D = NodePath("CollisionShape2D")

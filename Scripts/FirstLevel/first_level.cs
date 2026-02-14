@@ -4,6 +4,13 @@ using Godot;
 
 namespace ForceOfHell.Scripts.FirstLevel
 {
+    /// <summary>
+    /// Represents the main node for the first level of the game scene, responsible for item generation and managing
+    /// player and boss interactions.
+    /// </summary>
+    /// <remarks>This class provides references to item scenes and player/boss instances, enabling item
+    /// spawning and handling boss arena events. It is intended to be used as the root node for the first level,
+    /// coordinating gameplay elements such as item drops and boss activation.</remarks>
     public partial class first_level : Node
     {
         [Export] public PackedScene _weapon;

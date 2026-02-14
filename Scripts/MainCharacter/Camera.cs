@@ -1,8 +1,13 @@
 using Godot;
-using System;
 
 namespace ForceOfHell.Scripts.MainCharacter
 {
+    /// <summary>
+    /// Represents a 2D camera that follows the player and adjusts its position based on the player's movement.
+    /// </summary>
+    /// <remarks>This class inherits from Camera2D and provides functionality to smooth the camera's position
+    /// based on the player's velocity. It includes methods for controlling drag and smoothing speed, which are called
+    /// during the game loop.</remarks>
     public partial class Camera : Camera2D
     {
         /// <summary>

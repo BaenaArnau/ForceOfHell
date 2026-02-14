@@ -3,6 +3,12 @@ using Godot;
 
 namespace ForceOfHell.Scripts.Objects
 {
+    /// <summary>
+    /// Represents a climbable area that enables players to ascend when they enter the trigger zone.
+    /// </summary>
+    /// <remarks>This class manages player interactions with the climbing area, allowing players to climb when
+    /// they enter and disabling climbing when they exit. Ensure that the player node is correctly configured to
+    /// interact with this area.</remarks>
     public partial class Ladder : Area2D
     {
         [Export] Player _player;

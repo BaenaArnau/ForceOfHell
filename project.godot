@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="ForceOfHell"
-run/main_scene="uid://s1g41ap4ncfp"
+run/main_scene="uid://b44t7tpjoehgf"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 
 [dotnet]

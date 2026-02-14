@@ -15,13 +15,27 @@ namespace ForceOfHell.Scripts.StateMachine.MovementStateMachine.States
         private bool _landingSoundPlayed;
         private float _lastVerticalVelocity;
 
+        /// <summary>
+        /// Prepares the main character for interaction by ensuring it is ready within the game environment.
+        /// </summary>
+        /// <remarks>If the main character is not yet ready, this method asynchronously waits for the
+        /// 'ready' signal before proceeding. This ensures that subsequent operations involving the main character are
+        /// performed only when it is fully initialized.</remarks>
+        /// <returns>A task that represents the asynchronous operation of waiting for the main character to become ready.</returns>
         public override async Task Ready()
         {
             _player = (PlayerType)GetTree().GetFirstNodeInGroup("MainCharacter");
             if (!_player.IsNodeReady())
                 await ToSignal(_player, "ready");
         }
-        
+
+        /// <summary>
+        /// Transitions the player into the falling movement state and initializes relevant state variables and
+        /// animation.
+        /// </summary>
+        /// <remarks>This method resets the landing sound flag and vertical velocity, and sets the
+        /// player's animation to indicate a falling state. It should be called when the player begins to fall, ensuring
+        /// that the state is properly initialized for subsequent movement and collision handling.</remarks>
         public override void Enter()
         {
             _landingSoundPlayed = false;
@@ -29,6 +43,12 @@ namespace ForceOfHell.Scripts.StateMachine.MovementStateMachine.States
             _player.SetAnimation("fall");
         }
 
+        /// <summary>
+        /// Resets the state of the movement when exiting the falling state, ensuring that landing-related flags and
+        /// velocities are cleared.
+        /// </summary>
+        /// <remarks>Call this method when transitioning out of the falling movement state to prevent
+        /// unintended landing effects and to prepare for subsequent state changes.</remarks>
         public override void Exit()
         {
             _landingSoundPlayed = false;
@@ -68,8 +88,8 @@ namespace ForceOfHell.Scripts.StateMachine.MovementStateMachine.States
             }
 
             TryPlayLandingSound();
-            stateMachine.TransitionTo(Mathf.Abs(_player.Velocity.X) > 0.1f 
-                ? "RunningMovementState" 
+            stateMachine.TransitionTo(Mathf.Abs(_player.Velocity.X) > 0.1f
+                ? "RunningMovementState"
                 : "IdleMovementState");
         }
 
@@ -81,6 +101,11 @@ namespace ForceOfHell.Scripts.StateMachine.MovementStateMachine.States
                 stateMachine.TransitionTo("JumpingMovementState");
         }
 
+        /// <summary>
+        /// Attempts to play the landing sound if it has not already been played.
+        /// </summary>
+        /// <remarks>This method checks if the landing sound has already been played to prevent it from
+        /// being triggered multiple times. It is intended to be called when a landing event occurs.</remarks>
         private void TryPlayLandingSound()
         {
             if (_landingSoundPlayed)

@@ -3,6 +3,13 @@ using Godot;
 
 namespace ForceOfHell.Scripts.Objects
 {
+    /// <summary>
+    /// Represents a mana potion area that restores mana to a player upon entry.
+    /// </summary>
+    /// <remarks>The ManaPotion class inherits from Area2D and provides a bobbing visual effect. When a player
+    /// enters the area, a predefined amount of mana is restored to the player, up to their maximum mana, and the potion
+    /// is removed from the scene. This class is typically used as a collectible or power-up in gameplay
+    /// scenarios.</remarks>
     public partial class ManaPotion : Area2D
     {
         private const float BobAmplitude = 6f;
@@ -12,14 +19,26 @@ namespace ForceOfHell.Scripts.Objects
         private float _bobTime;
         private int manaRegenerayion = 20;
 
-        // Called when the node enters the scene tree for the first time.
+        /// <summary>
+        /// Initializes the node's state when it is added to the scene.
+        /// </summary>
+        /// <remarks>This method is called when the node is ready and can be used to set up initial values
+        /// or states. It is typically overridden to perform any necessary setup before the node starts
+        /// processing.</remarks>
         public override void _Ready()
         {
             _basePosition = Position;
             _bobTime = 0f;
         }
 
-        // Called every frame. 'delta' is the elapsed time since the previous frame.
+        /// <summary>
+        /// Updates the object's position to create a vertical bobbing effect based on the elapsed time since the last
+        /// frame.
+        /// </summary>
+        /// <remarks>The bobbing speed and amplitude are determined by the BobSpeed and BobAmplitude
+        /// properties. This method should be called every frame to maintain smooth motion.</remarks>
+        /// <param name="delta">The time, in seconds, that has passed since the previous frame. This value influences the calculation of the
+        /// bobbing motion.</param>
         public override void _Process(double delta)
         {
             _bobTime += (float)delta * BobSpeed;

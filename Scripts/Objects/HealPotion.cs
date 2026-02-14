@@ -3,6 +3,12 @@ using Godot;
 
 namespace ForceOfHell.Scripts.Objects
 {
+    /// <summary>
+    /// Represents a healing potion that restores health to players when they enter its area of effect.
+    /// </summary>
+    /// <remarks>The healing potion animates with a bobbing motion and applies a fixed amount of health
+    /// restoration to players who enter its area. The healing is capped at the player's maximum health, and the potion
+    /// is removed from the scene after use.</remarks>
     public partial class HealPotion : Area2D
     {
         private const float BobAmplitude = 6f;
@@ -12,14 +18,25 @@ namespace ForceOfHell.Scripts.Objects
         private float _bobTime;
         private int healRegenerayion = 20;
 
-        // Called when the node enters the scene tree for the first time.
+        /// <summary>
+        /// Initializes the node's state when it is added to the scene.
+        /// </summary>
+        /// <remarks>This method sets the initial position of the node and resets the bobbing time to
+        /// zero. It is called automatically when the node is ready.</remarks>
         public override void _Ready()
         {
             _basePosition = Position;
             _bobTime = 0f;
         }
 
-        // Called every frame. 'delta' is the elapsed time since the previous frame.
+        /// <summary>
+        /// Updates the object's position to create a vertical bobbing effect based on the elapsed time since the last
+        /// frame.
+        /// </summary>
+        /// <remarks>The bobbing effect is determined by the BobSpeed and BobAmplitude properties. Adjust
+        /// these properties to control the speed and height of the motion. This method is typically called every frame
+        /// to animate the object smoothly.</remarks>
+        /// <param name="delta">The time, in seconds, since the previous frame. This value influences the calculation of the bobbing motion.</param>
         public override void _Process(double delta)
         {
             _bobTime += (float)delta * BobSpeed;
