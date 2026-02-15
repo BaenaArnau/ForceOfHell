@@ -2,7 +2,6 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Text;
 
 namespace ForceOfHell.Scripts.Weapons
@@ -14,9 +13,9 @@ namespace ForceOfHell.Scripts.Weapons
     public partial class ReadWeapons
     {
         /// <summary>
-        /// Ruta absoluta al CSV dentro del sistema de archivos del proyecto (res://).
+        /// Ruta al CSV dentro del sistema de archivos virtual de Godot (res://).
         /// </summary>
-        private static string FilePath = ProjectSettings.GlobalizePath("res://Files/Weapon/weapons.csv");
+        private const string FilePath = "res://Files/Weapon/weapons.csv";
 
         /// <summary>
         /// Diccionario con todas las armas, indexadas por su identificador único.
@@ -51,16 +50,16 @@ namespace ForceOfHell.Scripts.Weapons
         /// </summary>
         private static void LoadWeaponsFromCsv()
         {
-            if (!File.Exists(FilePath))
-                throw new FileNotFoundException("No se ha encontrado el archivo de armas.", FilePath);
+            using var file = FileAccess.Open(FilePath, FileAccess.ModeFlags.Read);
+            if (file == null)
+                throw new Exception($"No se ha encontrado el archivo de armas: {FilePath} (Error: {FileAccess.GetOpenError()})");
 
-            using var reader = new StreamReader(FilePath);
             var headerRead = false;
 
             // Recorremos el archivo línea a línea para minimizar memoria y obtener feedback detallado.
-            while (!reader.EndOfStream)
+            while (file.GetPosition() < file.GetLength())
             {
-                var rawLine = reader.ReadLine();
+                var rawLine = file.GetLine();
                 if (string.IsNullOrWhiteSpace(rawLine))
                     continue; // Ignora líneas vacías para permitir comentarios o espacios en el archivo.
 
@@ -122,6 +121,7 @@ namespace ForceOfHell.Scripts.Weapons
         /// <summary>
         /// Normaliza valores vacíos o con la palabra "null" a null real para evitar cadenas sin contenido.
         /// </summary>
+#nullable enable
         private static string? NormalizeNull(string value)
         {
             var trimmed = value?.Trim();

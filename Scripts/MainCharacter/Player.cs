@@ -72,6 +72,7 @@ namespace ForceOfHell.Scripts.MainCharacter
             equip_weapon = new Weapons.Weapons();
             _animatedSprite = GetNodeOrNull<AnimatedSprite2D>("AnimatedSprite2D");
             equip_weapon.SetWeapon(0);
+            equip_weapon.Play(equip_weapon.Name);
             area2D.Monitoring = false;
 
         }
@@ -95,10 +96,8 @@ namespace ForceOfHell.Scripts.MainCharacter
             else
                 area2D.Monitoring = false;
 
-            if ((manaActual - equip_weapon.Cost) >= 0)
+            if (HasShootInput() && (manaActual - equip_weapon.Cost) >= 0)
                 attack();
-            else
-                GD.Print("No tienes suficiente mana para usar el arma.");
         }
 
         /// <summary>
@@ -233,12 +232,6 @@ namespace ForceOfHell.Scripts.MainCharacter
             }
 
             equip_weapon.SetWeapon(id);
-
-            // Actualiza la animación del arma si existe.
-            if (animatedWeapon != null)
-                animatedWeapon.SetAnimation(equip_weapon.Name);
-            else
-                GD.PushError("[Player] No se ha asignado el nodo de arma.");
         }
 
         /// <summary>
@@ -284,6 +277,18 @@ namespace ForceOfHell.Scripts.MainCharacter
         public int GetHealthMax()
         {
             return health;
+        }
+
+        /// <summary>
+        /// Checks whether any shooting input action is currently pressed.
+        /// </summary>
+        /// <returns><see langword="true"/> if any shot direction is pressed; otherwise, <see langword="false"/>.</returns>
+        private static bool HasShootInput()
+        {
+            return Input.IsActionPressed("shot_right")
+                || Input.IsActionPressed("shot_left")
+                || Input.IsActionPressed("shot_up")
+                || Input.IsActionPressed("shot_down");
         }
 
         /// <summary>

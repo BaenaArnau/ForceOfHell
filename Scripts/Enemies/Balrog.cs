@@ -135,7 +135,7 @@ namespace ForceOfHell.Scripts.Enemies
             if (body is Player p)
             {
                 if (p.area2D.Monitoring)
-                    DamageDealt(p.equip_weapon.Damage);
+                    _ = DamageDealt(p.equip_weapon.Damage);
             }
         }
 

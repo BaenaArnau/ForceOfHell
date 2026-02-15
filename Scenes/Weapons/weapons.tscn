@@ -137,5 +137,5 @@ animations = [{
 texture_filter = 1
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_e5s1b")
-animation = &"Sword"
+animation = &"Staff"
 script = ExtResource("1_ws0du")

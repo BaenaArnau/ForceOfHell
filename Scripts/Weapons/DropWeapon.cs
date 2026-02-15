@@ -19,6 +19,7 @@ namespace ForceOfHell.Scripts.Weapons
 
         private readonly RandomNumberGenerator _rng = new();
         private Weapons _weaponSprite = default!;
+#nullable enable
         private Area2D? _infoArea;
         private PopupPanel? _popup;
         private Label? _nameLabel;

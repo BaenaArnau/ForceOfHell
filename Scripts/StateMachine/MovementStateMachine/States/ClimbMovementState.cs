@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Threading.Tasks;
 using PlayerType = ForceOfHell.Scripts.MainCharacter.Player;
 
@@ -91,7 +92,15 @@ namespace ForceOfHell.Scripts.StateMachine.MovementStateMachine.States
             _player.Velocity = new Vector2(0f, moveY * ClimbSpeed);
             _player.MoveAndSlide();
 
-            _player.SetAnimation(Mathf.Abs(moveY) > 0.01f ? "climb" : "idle");
+            try
+            {
+                _player.SetAnimation(Mathf.Abs(moveY) > 0.01f ? "climb" : "idle");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         /// <summary>

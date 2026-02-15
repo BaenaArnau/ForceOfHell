@@ -122,6 +122,14 @@ region = Rect2(78, 0, 26, 26)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("6_vn8kb")
+}],
+"loop": true,
+"name": &"climb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_g28bo")
 }, {
 "duration": 1.0,
@@ -255,7 +263,7 @@ texture_filter = 1
 texture_repeat = 1
 position = Vector2(1, -2)
 sprite_frames = SubResource("SpriteFrames_da458")
-animation = &"run"
+animation = &"climb"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=151177965]
 position = Vector2(0.5, 0)
@@ -315,6 +323,7 @@ _player = NodePath("../../..")
 
 [node name="AnimatedSprite2D2" parent="." unique_id=1117934843 instance=ExtResource("8_5l7sn")]
 position = Vector2(5, -2)
+animation = &"Staff"
 
 [node name="AreaMelee" type="Area2D" parent="." unique_id=2069957134]
 position = Vector2(14, -1)
