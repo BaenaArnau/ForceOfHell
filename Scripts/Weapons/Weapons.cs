@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+#nullable enable
 namespace ForceOfHell.Scripts.Weapons
 {
     /// <summary>
@@ -33,7 +34,7 @@ namespace ForceOfHell.Scripts.Weapons
         public bool IsMeelee { get; set; }
 
         /// <summary>Nombre del recurso de bala asociado.</summary>
-#nullable enable
+
         public string? Bullet { get; set; }
 
         /// <summary>Dirección del disparo calculada desde la entrada.</summary>
@@ -52,7 +53,6 @@ namespace ForceOfHell.Scripts.Weapons
         private const float RecoilReturnDuration = 0.1f;
 
         /// <summary>Tween activo del retroceso, para cancelarlo si se lanza otro.</summary>
-#nullable enable
         private Tween? _recoilTween;
 
         /// <summary>Inicializa el arma por defecto.</summary>

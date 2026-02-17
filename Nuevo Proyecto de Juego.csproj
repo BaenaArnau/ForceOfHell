@@ -6,7 +6,9 @@
 	<RootNamespace>ForceOfHell</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+	<None Include=".github\workflows\doxygen.yml" />
 	<None Include=".gitignore" />
+	<None Include="Doxyfile" />
 	<None Include="Files\**\*" />
 	<None Include="Scenes\**\*" />
   </ItemGroup>

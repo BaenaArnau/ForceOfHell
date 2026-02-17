@@ -1,0 +1,46 @@
+# Doxyfile - ForceOfHell Documentation Configuration
+
+PROJECT_NAME           = "ForceOfHell"
+PROJECT_BRIEF          = "Force of Hell - Game Documentation"
+OUTPUT_DIRECTORY       = docs_output
+CREATE_SUBDIRS         = NO
+
+# Input
+INPUT                  = Scripts
+FILE_PATTERNS          = *.cs
+RECURSIVE              = YES
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+
+# Source browsing
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = NO
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+
+# Output formats
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+GENERATE_LATEX         = NO
+GENERATE_XML           = NO
+
+# HTML options
+HTML_COLORSTYLE_HUE    = 220
+HTML_COLORSTYLE_SAT    = 100
+HTML_COLORSTYLE_GAMMA  = 80
+HTML_DYNAMIC_SECTIONS  = YES
+SEARCHENGINE           = YES
+
+# Diagrams
+HAVE_DOT               = NO
+CLASS_DIAGRAMS         = YES
+
+# Warnings
+QUIET                  = NO
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
+
+# Optimization for C#
+OPTIMIZE_OUTPUT_JAVA   = YES
+BUILTIN_STL_SUPPORT    = NO

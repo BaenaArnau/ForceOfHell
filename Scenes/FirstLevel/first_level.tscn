@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://div88w48egwfc" path="res://Scenes/Objects/ladder.tscn" id="13_iy6yp"]
 [ext_resource type="AudioStream" uid="uid://c2adrnhlmpbjo" path="res://Assets/Sounds/Music/lolivac-fantasy-forest.mp3" id="14_e7txn"]
 [ext_resource type="PackedScene" uid="uid://c700rac6sp6at" path="res://Scenes/Enemies/Skeleton.tscn" id="14_vv7h8"]
-[ext_resource type="PackedScene" uid="uid://c57xv1hl2vwcu" path="res://Scenes/Enemies/Balrog.tscn" id="15_vv7h8"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/Balrog.tscn" id="15_vv7h8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8qcnd"]
 texture = ExtResource("1_hvaqb")
@@ -405,9 +405,8 @@ position = Vector2(2088, 321)
 [node name="Goblin 5" parent="Enemigos" unique_id=1522031697 instance=ExtResource("13_e7txn")]
 position = Vector2(1793, 510)
 
-[node name="Balrog" parent="Enemigos" unique_id=2037420680 node_paths=PackedStringArray("_player") instance=ExtResource("15_vv7h8")]
+[node name="Balrog" parent="Enemigos" unique_id=2037420680 instance=ExtResource("15_vv7h8")]
 position = Vector2(2668, 357)
-_player = NodePath("../../Character")
 
 [node name="Skeleton6" parent="Enemigos" unique_id=871385819 instance=ExtResource("14_vv7h8")]
 position = Vector2(554, 150)
