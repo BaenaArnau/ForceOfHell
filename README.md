@@ -83,7 +83,7 @@ cd ForceOfHell
 ## 👨‍💻 Author
 
 - **Arnau Baena** - Game Developer - [@BaenaArnau](https://github.com/BaenaArnau)
-- **Seri Flores** - Game Developer - [@SrG640](https://github.com/SrG640)
+- **Sergi Flores** - Game Developer - [@SrG640](https://github.com/SrG640)
 
 ## 📄 License
 
